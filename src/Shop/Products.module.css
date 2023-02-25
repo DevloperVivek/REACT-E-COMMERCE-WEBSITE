@@ -1,0 +1,13 @@
+.title {
+    margin-top: 8rem;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+.ualign {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 25%;
+}
