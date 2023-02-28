@@ -10,8 +10,10 @@
   }
    
   .header h1 {
-    color: white;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
     margin-left: 20px;
+    margin-right: 20px;
   }
   
   .header ul {
@@ -24,9 +26,14 @@
     list-style: none;
   }
 
-  .nav__links li {
+  .nav__links li { 
     display: inline-block;
     padding: 0px 20px;
+    color: white;
   }
 
+  .nav__links li a {
+    text-decoration: none;
+    color: aliceblue;
+  }
  

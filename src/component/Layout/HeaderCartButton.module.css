@@ -4,7 +4,7 @@
     border: none;
     background-color: #000000;
     color: white;
-    padding: 0.75rem 2rem;
+    padding: 0.75rem 1rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -27,7 +27,6 @@
     background-color: #000000;
     padding: 0.25rem 1rem;
     border-radius: 25px;
-    /* margin-left: 0.50rem; */
     font-weight: bold;
   }
   

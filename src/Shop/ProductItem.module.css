@@ -1,6 +1,5 @@
 .item {
   margin-top: 3rem;
-  /* margin-right: 0.3rem; */
   margin-bottom: 5rem;
 }
 
@@ -21,9 +20,9 @@
   width: 100px;
 }
 
-.item p {
+/* .item p {
   color: #3a3a3a;
-}
+} */
 
 .actions {
   display: flex;
@@ -46,18 +45,6 @@
   margin-left: 2.5rem;
   font-weight: bold;
 }
-
-/* .btn {
-  font: inherit;
-  cursor: pointer;
-  background-color: #000000;
-  border: 1px solid #ffffff;
-  color: white;
-  padding: 2px 50px;
-  margin-left: 1rem;
-  border-radius: 20px;
-  font-weight: bold;
-} */
 
 .btn:hover,
 .btn:active {

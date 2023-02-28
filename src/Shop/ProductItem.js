@@ -26,10 +26,14 @@ const ProductItem = (props) => {
       </header>
       <div className={classes.pribtn}>
         <div className={classes.price}>${props.price.toFixed(2)}</div>
-        {/* <Form onAddToCart={addToCartHandler} /> */}
-        <button onClick={addToCartHandler} input={{id: "amount_" + props.id}} className={classes.btn}>+ Add</button>
-    
-     </div>
+        <button
+          onClick={addToCartHandler}
+          input={{ id: "amount_" + props.id }}
+          className={classes.btn}
+        >
+          + Add
+        </button>
+      </div>
     </li>
   );
 };

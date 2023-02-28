@@ -1,6 +1,8 @@
 .title {
-    margin-top: 8rem;
-    color: rgb(0, 0, 0);
+    margin-top: 1.5rem;
+    background-color: #777;
+    padding: 3rem;
+    color: rgb(255, 255, 255);
     text-align: center;
     text-transform: uppercase;
   }
