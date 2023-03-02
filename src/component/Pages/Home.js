@@ -75,7 +75,6 @@ export default function Home() {
         {cartIsShown && <Cart onClose={hideCartHandler} />}
         <Header onShowCart={showCartHandler} />
         <h1 className={classes.title}>Tours</h1>
-
         <main>
           <ul className={classes.ualign}>{homeList}</ul>
         </main>

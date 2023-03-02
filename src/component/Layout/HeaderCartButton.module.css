@@ -62,3 +62,30 @@
       transform: scale(1);
     }
   }
+
+  @media(max-width: 700px) {
+    .button {
+      font-size: medium;
+      margin: 1%;
+    }
+
+    .header nav__links {
+      font-size: medium;
+      margin: 1%;
+    }
+
+    .icon {
+      width: 1rem;
+      height: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    .badge {
+      background-color: #000000;
+      padding: 5px;
+      margin: auto;
+      border-radius: 10px;
+      font-weight:500;
+    }
+
+  }

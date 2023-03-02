@@ -9,7 +9,7 @@ const Header = (props) => {
       <header className={classes.header}>
         <h1>The Generics</h1>
         <nav>
-          <ul className={classes.nav__links}>
+          <ul className={classes.navlinks}>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -18,6 +18,9 @@ const Header = (props) => {
             </li>
             <li>
               <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact Us</Link>
             </li>
           </ul>
         </nav>

@@ -1,0 +1,58 @@
+.card h1 {
+    text-align: center;
+  }
+  
+  .card { 
+    background: #56CCF2;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    margin-top: 7rem;
+    max-width: 450px;
+    padding: 2rem;
+  }
+  
+  .control {
+    margin-bottom: 1rem;
+  }
+  
+  .control label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: left;
+  }
+  
+  .control input,
+  .control textarea {
+    display: block;
+    width: 100%;
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  
+  .control input:focus,
+  .control textarea:focus {
+    outline: none;
+    border-color: #230052;
+  }
+  
+  .btn {
+    background-color: #230052;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #3f006c;
+  }
+  
