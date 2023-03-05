@@ -1,10 +1,9 @@
-  .cart-items {
+ .cart-items {
     list-style: none;
-    margin: 0;
-    padding: 0;
-    max-height: 20rem;
+    margin: 20px;
+    padding: 10px;
     overflow: auto;
-    max-height: 20rem;
+    max-height: 15rem;
     overflow: scroll;
   }
   
@@ -13,12 +12,13 @@
     justify-content: space-between;
     align-items: center;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin: 1rem 0;
   }
   
   .actions {
-    text-align: right;
+    display: flex;
+    float:right;
   }
   
   .actions button {
@@ -26,9 +26,9 @@
     cursor: pointer;
     background-color: transparent;
     border: 1px solid #000000;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 25px;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
   
   .actions button:hover,
@@ -45,4 +45,29 @@
   .actions .button {
     background-color: #282828;
     color: white;
+  }
+
+  @media(max-width: 700px) {
+    .cart-items {
+      list-style: none;
+      margin: 10px;
+      padding: 10px;
+      overflow: auto;
+      max-height: 15rem;
+      overflow: scroll;
+    }
+    
+    .actions {
+      text-align: right;
+    }
+    
+    .actions button {
+      font: inherit;
+      cursor: pointer;
+      background-color: transparent;
+      border: 1px solid #000000;
+      padding: 0.5rem 0.5rem;
+      border-radius: 25px;
+      margin-left: 1rem;
+    }
   }
