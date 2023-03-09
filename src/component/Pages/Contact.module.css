@@ -52,7 +52,29 @@
     padding: 0.5rem 1rem;
     transition: background-color 0.3s ease;
   }
-  
+
+  .logintext {
+    align-items: center;
+    margin-left: 8rem;
+    font-size: 15px;
+  }
+
+  .loginbtn {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-left: 0.7rem;
+    width: 80px;
+    height: 40px;
+    padding: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+
   .btn:hover {
     background-color: #8f8f8f;
   }

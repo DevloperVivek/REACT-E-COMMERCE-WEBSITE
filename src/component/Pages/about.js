@@ -1,10 +1,8 @@
-import Header from "../Layout/Header";
 import classes from "./about.module.css";
 
 export default function About() {
   return (
     <div>
-      <Header />
       <div className={classes.title}>
         <h1>About</h1>
         <div>

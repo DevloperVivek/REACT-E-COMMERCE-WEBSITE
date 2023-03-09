@@ -43,10 +43,6 @@ const Login = () => {
             setLoading(false);
             setSuccess(true);
             console.log(data);
-            localStorage.setItem("email", data.email);
-            // const userKey = `user_${data.localId}`;
-            // localStorage.setItem(userKey, data.email);
-            // console.log("From Local Storage: " + localStorage.getItem(userKey));
           });
         } else {
           setLoading(false);

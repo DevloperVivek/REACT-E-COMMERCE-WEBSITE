@@ -12,8 +12,8 @@
   .header h1 {
     font-size: 20px;
     color: rgb(255, 255, 255);
-    margin-left: 20px;
-    margin-right: 20px;
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
   }
   
   .header ul {
@@ -28,18 +28,20 @@
 
   .navlinks li { 
     display: inline-block;
-    padding: 0px 20px;
+    padding: 0px 50px;
     color: white;
   }
 
   .navlinks li a {
+    font-size: small;
     text-decoration: none;
     color: aliceblue;
+    margin: 1px;
   }
  
   @media(max-width: 700px) {
     .header h1 {
-      font-size: medium;
+      font-size:small;
       margin: 1%;
     }
 
@@ -49,4 +51,10 @@
       margin: auto;
       color: white;
     }
+    
+  .navlinks li a {
+    text-decoration: none;
+    color: aliceblue;
+    margin: 1px;
+  }
   }

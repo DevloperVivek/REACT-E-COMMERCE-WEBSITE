@@ -65,12 +65,13 @@
 
   @media(max-width: 700px) {
     .button {
-      font-size: medium;
-      margin: 1%;
+      font-size: small;
+      margin: 0;
+      padding: 0;
     }
 
-    .header nav__links {
-      font-size: medium;
+    .header navlinks {
+      font-size: small;
       margin: 1%;
     }
 
