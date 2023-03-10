@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import CartContext from "../../store/cart-context";
+import AuthContext from "../Auth/Auth-context";
 import classes from "./Contact.module.css";
 
 const Login = () => {
+  const cartCtx = useContext(CartContext);
+
+  const authCtx = useContext(AuthContext);
+
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -43,10 +49,9 @@ const Login = () => {
             setLoading(false);
             setSuccess(true);
             console.log(data);
-            localStorage.setItem("email", data.email);
-            // const userKey = `user_${data.localId}`;
-            // localStorage.setItem(userKey, data.email);
-            // console.log("From Local Storage: " + localStorage.getItem(userKey));
+            localStorage.setItem("email", data.idToken);
+            cartCtx.setToken(data.token);
+            authCtx.login(data.idToken);
           });
         } else {
           setLoading(false);

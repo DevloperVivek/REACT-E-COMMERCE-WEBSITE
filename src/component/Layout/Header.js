@@ -1,102 +1,68 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../Auth/Auth-context";
 import classes from "./Header.module.css";
 import HeaderCartButton from "./HeaderCartButton";
 
-const user = localStorage.getItem("email");
 console.log(localStorage.getItem("email"));
-const Routing = () => {
-  if (!user) {
-    return (
-      <nav className={classes.nav}>
-        <ul className={classes.navlinks}>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/store">Store</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-        </ul>
-      </nav>
-    );
-  } else {
-    return (
-      <nav className={classes.nav}>
-        <ul className={classes.navlinks}>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/store">Store</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact Us</Link>
-          </li>
-          <li>
-            <Link to="/signup">Signup</Link>
-          </li>
-          <li>
-            <Link to="/signup">Logout</Link>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
-};
+
 const Header = (props) => {
+  const authCtx = useContext(AuthContext);
+  const isLogin = authCtx.isLoggedIn;
+
+  const logoutHandler = () => {
+    authCtx.logout();
+  };
+
   return (
     <header className={classes.header}>
       <h1>The Generics</h1>
-      <nav className={classes.nav}>{Routing()}</nav>
+      <nav className={classes.nav}>
+        <nav className={classes.nav}>
+          <ul className={classes.navlinks}>
+            {isLogin && (
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+            )}
+            {isLogin && (
+              <li>
+                <Link to="/store">Store</Link>
+              </li>
+            )}
+            {isLogin && (
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+            )}
+            {isLogin && (
+              <li>
+                <Link to="/contact">Contact Us</Link>
+              </li>
+            )}
+            {!isLogin && (
+              <li>
+                <Link to="/signup">Signup</Link>
+              </li>
+            )}
+            {isLogin && (
+              <li>
+                <Link to="/" onClick={logoutHandler}>
+                  Logout
+                </Link>
+              </li>
+            )}
+            {!isLogin && (
+              <li>
+                <Link to="/signup">Login</Link>
+              </li>
+            )}
+          </ul>
+        </nav>
+      </nav>
       <HeaderCartButton onClick={props.onShowCart} />
     </header>
   );
 };
-
-// const Header = () => {
-//   return (
-//     <header className={classes.header}>
-//       <nav className={classes.nav}>
-//         <ul>
-//           <li>
-//             <Link to="/">Home</Link>
-//           </li>
-//           <li>
-//             <Link to="/store">Store</Link>
-//           </li>
-//           <li>
-//             <Link to="/about">About</Link>
-//           </li>
-//           <li>
-//             <Link to="/contact">Contact</Link>
-//           </li>
-//           {isLoggedIn ? (
-//             <li>
-//               <HeaderCartButton />
-//             </li>
-//           ) : (
-//             <>
-//               <li>
-//                 <Link to="/login">Login</Link>
-//               </li>
-//               <li>
-//                 <Link to="/signup">Signup</Link>
-//               </li>
-//             </>
-//           )}
-//         </ul>
-//       </nav>
-//     </header>
-//   );
-// };
 
 export default Header;
