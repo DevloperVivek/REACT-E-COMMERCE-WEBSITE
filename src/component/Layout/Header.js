@@ -22,6 +22,11 @@ const Header = (props) => {
           <ul className={classes.navlinks}>
             {isLogin && (
               <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+            )}
+            {isLogin && (
+              <li>
                 <Link to="/">Home</Link>
               </li>
             )}
