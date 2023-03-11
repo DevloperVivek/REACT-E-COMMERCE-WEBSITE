@@ -4,8 +4,6 @@ import AuthContext from "../Auth/Auth-context";
 import classes from "./Header.module.css";
 import HeaderCartButton from "./HeaderCartButton";
 
-console.log(localStorage.getItem("email"));
-
 const Header = (props) => {
   const authCtx = useContext(AuthContext);
   const isLogin = authCtx.isLoggedIn;

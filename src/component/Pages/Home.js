@@ -1,9 +1,7 @@
 import { useState } from "react";
 import "../../App.css";
-// import Products from "../../Shop/Products";
 import Cart from "../../component/Cart/Cart";
 import Header from "../../component/Layout/Header";
-// import ProductItem from "../../Shop/ProductItem";
 import CartProvider from "../../store/CartProvider";
 import classes from "./Home.module.css";
 import HomeList from "./HomeList";
@@ -60,7 +58,6 @@ export default function Home() {
 
   const homeList = homeArr.map((product) => (
     <HomeList
-      // id={product.id}
       key={product.id}
       date={product.date}
       place={product.place}
@@ -79,28 +76,6 @@ export default function Home() {
           <ul className={classes.ualign}>{homeList}</ul>
         </main>
       </CartProvider>
-      <footer>
-        <h1 className={classes.footertitle}>The Generics</h1>
-        <div className={classes.footericons}>
-          <ul>
-            <li>
-              <a href="https://www.youtube.com">
-                <img src="/img/6260efc8fc9a9002669d2f4ad9956cc0.jpg" alt="" />
-              </a>
-            </li>
-            <li>
-              <a href="https://spotify.com">
-                <img src="/img/Spotify Logo.png" alt="" />
-              </a>
-            </li>
-            <li>
-              <a href="https://facebook.com">
-                <img src="/img/Facebook Logo.png" alt="" />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </footer>
     </div>
   );
 }
