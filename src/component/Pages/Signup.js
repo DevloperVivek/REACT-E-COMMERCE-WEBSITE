@@ -1,12 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import CartContext from "../../store/cart-context";
 import AuthContext from "../Auth/Auth-context";
 import classes from "./Contact.module.css";
 
 const Login = () => {
   const cartCtx = useContext(CartContext);
-
   const authCtx = useContext(AuthContext);
+
+  const emailInputRef = useRef();
+  const PasswordInputRef = useRef();
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -17,15 +19,18 @@ const Login = () => {
     event.preventDefault();
     setLoading(true);
 
-    const formData = new FormData(event.target);
-    const email = formData.get("email");
-    const password = formData.get("password");
+    // const formData = new FormData(event.target);
+    // const email = formData.get("email");
+    // const password = formData.get("password");
 
-    const data = {
-      email: email,
-      password: password,
-      returnSecureToken: true,
-    };
+    // const data = {
+    //   email: email,
+    //   password: password,
+    //   returnSecureToken: true,
+    // };
+
+    const enteredEmail = emailInputRef.current.value;
+    const enteredPassword = PasswordInputRef.current.value;
 
     let url = "";
     if (isLogin) {
@@ -38,7 +43,11 @@ const Login = () => {
 
     fetch(url, {
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        email: enteredEmail,
+        password: enteredPassword,
+        returnSecureToken: true,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -78,10 +87,15 @@ const Login = () => {
         <form id="login-form" onSubmit={handleSubmit}>
           <div className={classes.control}>
             <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" />
+            <input type="email" id="email" name="email" ref={emailInputRef} />
             <br />
             <label htmlFor="password">Password:</label>
-            <input type="password" id="password" name="password" />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              ref={PasswordInputRef}
+            />
             <br />
             <button className={classes.btn} type="submit" disabled={loading}>
               {loading ? "Logging in" : isLogin ? "Login" : "Signup"}

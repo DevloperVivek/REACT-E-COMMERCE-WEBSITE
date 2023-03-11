@@ -52,7 +52,7 @@ const Header = (props) => {
             )}
             {isLogin && (
               <li>
-                <Link to="/" onClick={logoutHandler}>
+                <Link to="/signup" onClick={logoutHandler}>
                   Logout
                 </Link>
               </li>
