@@ -9,7 +9,7 @@ const Footer = () => {
           <li>
             <a href="https://www.youtube.com">
               <img
-                src="https://www.iconfinder.com/icons/3225180/app_logo_media_popular_social_youtube_icon"
+                // src="https://www.iconfinder.com/icons/3225180/app_logo_media_popular_social_youtube_icon"
                 alt=""
               />
             </a>
@@ -17,7 +17,7 @@ const Footer = () => {
           <li>
             <a href="https://twitter.com">
               <img
-                src="https://www.iconfinder.com/icons/3225183/app_logo_media_popular_social_twitter_icon"
+                // src="https://www.iconfinder.com/icons/3225183/app_logo_media_popular_social_twitter_icon"
                 alt=""
               />
             </a>
@@ -25,7 +25,7 @@ const Footer = () => {
           <li>
             <a href="https://facebook.com">
               <img
-                src="https://www.iconfinder.com/icons/291720/social_media_media_facebook_logo_internet_social_icon"
+                // src="https://www.iconfinder.com/icons/291720/social_media_media_facebook_logo_internet_social_icon"
                 alt=""
               />
             </a>

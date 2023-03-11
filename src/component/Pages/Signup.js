@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import CartContext from "../../store/cart-context";
 import AuthContext from "../Auth/Auth-context";
 import classes from "./Contact.module.css";
@@ -6,6 +7,8 @@ import classes from "./Contact.module.css";
 const Login = () => {
   const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const emailInputRef = useRef();
   const PasswordInputRef = useRef();
@@ -19,21 +22,11 @@ const Login = () => {
     event.preventDefault();
     setLoading(true);
 
-    // const formData = new FormData(event.target);
-    // const email = formData.get("email");
-    // const password = formData.get("password");
-
-    // const data = {
-    //   email: email,
-    //   password: password,
-    //   returnSecureToken: true,
-    // };
-
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = PasswordInputRef.current.value;
 
     let url = "";
-    if (isLogin) {
+    if (authCtx.isLoggedIn) {
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDNFisNSnZdhT0kZ0GNIAbNZBf9N_aB4r0";
     } else {
@@ -61,10 +54,14 @@ const Login = () => {
             localStorage.setItem("email", data.idToken);
             cartCtx.setToken(data.token);
             authCtx.login(data.idToken);
+            navigate("/store");
           });
         } else {
           setLoading(false);
           setError("Invalid email or password");
+          {
+            alert("Invalid Email or Password!");
+          }
           throw new Error("Invalid email or password");
         }
       })

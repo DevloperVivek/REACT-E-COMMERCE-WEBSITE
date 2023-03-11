@@ -23,31 +23,27 @@ const Header = (props) => {
                 <Link to="/profile">Profile</Link>
               </li>
             )}
-            {isLogin && (
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-            )}
+            <li>
+              <Link to="/">Home</Link>
+            </li>
             {isLogin && (
               <li>
                 <Link to="/store">Store</Link>
               </li>
             )}
-            {isLogin && (
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-            )}
+            <li>
+              <Link to="/about">About</Link>
+            </li>
             {isLogin && (
               <li>
                 <Link to="/contact">Contact Us</Link>
               </li>
             )}
-            {!isLogin && (
+            {/* {!isLogin && (
               <li>
                 <Link to="/signup">Signup</Link>
               </li>
-            )}
+            )} */}
             {isLogin && (
               <li>
                 <Link to="/signup" onClick={logoutHandler}>

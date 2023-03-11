@@ -1,4 +1,3 @@
-// import { Link } from "react-router-dom";
 import ProductItem from "./ProductItem";
 import classes from "./Products.module.css";
 
@@ -32,7 +31,6 @@ const productsArr = [
 const Products = () => {
   const productsList = productsArr.map((product) => (
     <div key={product.id}>
-      {/* <Link className={classes.link} to={`/products/${product.id}`}> */}
       <ProductItem
         id={product.id}
         key={product.id}
@@ -41,7 +39,6 @@ const Products = () => {
         quantity={product.quantity}
         imageUrl={product.imageUrl}
       />
-      {/* </Link> */}
     </div>
   ));
 
