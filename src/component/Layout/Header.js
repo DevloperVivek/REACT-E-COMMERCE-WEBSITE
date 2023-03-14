@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AuthContext from "../Auth/Auth-context";
 import classes from "./Header.module.css";
 import HeaderCartButton from "./HeaderCartButton";
@@ -20,40 +20,85 @@ const Header = (props) => {
           <ul className={classes.navlinks}>
             {isLogin && (
               <li>
-                <Link to="/profile">Profile</Link>
+                <NavLink
+                  to="/profile"
+                  className={({ isActive }) =>
+                    isActive ? classes.active : undefined
+                  }
+                >
+                  Profile
+                </NavLink>
               </li>
             )}
             <li>
-              <Link to="/">Home</Link>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+                end
+              >
+                Home
+              </NavLink>
             </li>
-            {isLogin && (
-              <li>
-                <Link to="/store">Store</Link>
-              </li>
-            )}
+            {/* {isLogin && ( */}
             <li>
-              <Link to="/about">About</Link>
+              <NavLink
+                to="/products"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                Store
+              </NavLink>
+            </li>
+            {/* )} */}
+            <li>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive ? classes.active : undefined
+                }
+              >
+                About
+              </NavLink>
             </li>
             {isLogin && (
               <li>
-                <Link to="/contact">Contact Us</Link>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    isActive ? classes.active : undefined
+                  }
+                >
+                  Contact Us
+                </NavLink>
               </li>
             )}
-            {/* {!isLogin && (
-              <li>
-                <Link to="/signup">Signup</Link>
-              </li>
-            )} */}
+
             {isLogin && (
               <li>
-                <Link to="/signup" onClick={logoutHandler}>
+                <NavLink
+                  to="/signup"
+                  onClick={logoutHandler}
+                  className={({ isActive }) =>
+                    isActive ? classes.active : undefined
+                  }
+                >
                   Logout
-                </Link>
+                </NavLink>
               </li>
             )}
             {!isLogin && (
               <li>
-                <Link to="/signup">Login</Link>
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    isActive ? classes.active : undefined
+                  }
+                >
+                  Login
+                </NavLink>
               </li>
             )}
           </ul>

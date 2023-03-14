@@ -7,15 +7,14 @@ const ChangePassword = () => {
 
   const authCtx = useContext(AuthContext);
 
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(null);
-  const [oldPassword, setOldPassword] = useState("");
+  // const [loading, setLoading] = useState(false);
+  // const [success, setSuccess] = useState(false);
+  // const [error, setError] = useState(null);
   const [newPassword, setNewPassword] = useState("");
 
   const handleChangePassword = (event) => {
     event.preventDefault();
-    setLoading(true);
+    // setLoading(true);
 
     const enteredNewPassword = newPasswordInputRef.current.value;
 
@@ -35,17 +34,18 @@ const ChangePassword = () => {
     )
       .then((response) => {
         console.log(response + "Password Changed Succesfully");
-        setLoading(false);
+        // setLoading(false);
         if (response.ok) {
-          setSuccess(true);
+          console.log(newPassword);
+          // setSuccess(true);
         } else {
-          setError("Unable to change password. Please try again.");
+          // setError("Unable to change password. Please try again.");
         }
       })
       .catch((error) => {
-        setLoading(false);
+        // setLoading(false);
         console.log(error);
-        setError("Unable to change password. Please try again.");
+        // setError("Unable to change password. Please try again.");
       });
   };
 

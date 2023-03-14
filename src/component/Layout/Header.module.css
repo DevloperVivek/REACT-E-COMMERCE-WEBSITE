@@ -10,10 +10,9 @@
   }
    
   .header h1 {
-    font-size: 20px;
+    font-size: 25px;
     color: rgb(255, 255, 255);
-    /* margin-left: 20px; */
-    /* margin-right: 20px; */
+    margin: 7px;
   }
   
   .header ul {
@@ -28,26 +27,30 @@
 
   .navlinks li { 
     display: inline-block;
-    padding: 0px 50px;
-    color: white;
+    padding: 0px 10px;
   }
 
   .navlinks li a {
     font-size: small;
     text-decoration: none;
     color: aliceblue;
-    margin: 1px;
+    margin: 0;
   }
- 
+  
+  .navlinks li :hover,
+  .navlinks.active {
+    color: var(#5e5e5e)
+  }
+
   @media(max-width: 700px) {
     .header h1 {
-      font-size:small;
-      margin: 1%;
+      font-size: 14px;
+      margin: 2%;
     }
 
     .navlinks li { 
       display: inline-block;
-      padding: 8px;
+      padding: 0px 5px;
       margin: auto;
       color: white;
     }
@@ -57,4 +60,10 @@
     color: aliceblue;
     margin: 1px;
   }
+  
+  .navlinks li :hover,
+  .navlinks.active {
+    color:antiquewhite;
+    text-decoration: underline;
   }
+}
