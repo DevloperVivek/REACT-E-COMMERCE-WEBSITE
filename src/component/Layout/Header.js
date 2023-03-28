@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import AuthContext from "../Auth/Auth-context";
+import AuthContext from "../../context/Auth-context";
 import classes from "./Header.module.css";
 import HeaderCartButton from "./HeaderCartButton";
 

@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import AuthContext from "../Auth/Auth-context";
+import AuthContext from "../../context/Auth-context";
 import classes from "./ChangePassword.module.css";
 
 const ChangePassword = () => {

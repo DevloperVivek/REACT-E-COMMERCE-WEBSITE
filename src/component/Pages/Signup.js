@@ -1,16 +1,15 @@
 import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CartContext from "../../store/cart-context";
+import AuthContext from "../../context/Auth-context";
 import classes from "./Contact.module.css";
+// import CartContext from "../../context/cart-context";
 
 const Signup = () => {
-  const cartCtx = useContext(CartContext);
-
+  const authCtx = useContext(AuthContext);
+  // const cartCtx = useContext(CartContext);
   const navigate = useNavigate();
-
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
@@ -38,20 +37,19 @@ const Signup = () => {
     )
       .then((response) => {
         if (response.ok) {
-          response.json().then((data) => {
+          response.json().then((response) => {
             setLoading(false);
             setSuccess(true);
-            console.log(data);
-            localStorage.setItem("email", data.idToken);
-            cartCtx.setToken(data.token);
+            console.log(response);
+            localStorage.setItem("token", response.idToken);
+            authCtx.setToken(response.idToken);
             navigate("/login");
+            console.log("Signed up Succesfully");
           });
         } else {
           setLoading(false);
           setError("Invalid email or password");
-
           alert("Invalid Email or Password!");
-
           throw new Error("Invalid email or password");
         }
       })

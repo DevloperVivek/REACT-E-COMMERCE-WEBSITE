@@ -5,19 +5,24 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import Header from "./component/Layout/Header";
-import { AuthContextProvider } from "./component/Auth/Auth-context";
-import Footer from "./component/Pages/Footer";
+import { AuthContextProvider } from "./context/Auth-context";
+import CartProvider from "./context/CartProvider";
+import Footer from "./component/Layout/Footer";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-      <BrowserRouter>
-        <Header />
-        <App />
-        <Footer />
-      </BrowserRouter>
-    </AuthContextProvider>
+    <CartProvider>
+      <AuthContextProvider>
+        <BrowserRouter>
+          <Header />
+          <CartProvider>
+            <App />
+          </CartProvider>
+          <Footer />
+        </BrowserRouter>
+      </AuthContextProvider>
+    </CartProvider>
   </React.StrictMode>
 );
 

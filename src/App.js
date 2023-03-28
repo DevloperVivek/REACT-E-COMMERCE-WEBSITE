@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
-import AuthContext from "./component/Auth/Auth-context";
+import AuthContext from "./context/Auth-context";
 import About from "./component/Pages/about";
 import ChangePassword from "./component/Pages/ChangePassword.js";
 import Contact from "./component/Pages/Contact";
@@ -12,12 +12,6 @@ import Products from "./Shop/Products";
 
 const Routing = () => {
   const authCtx = useContext(AuthContext);
-  const navigate = useNavigate;
-
-  if (!authCtx.isLoggedIn && window.location.pathname === "/products") {
-    navigate("/login");
-  }
-
   return (
     <Routes>
       {authCtx.isLoggedIn && (
@@ -38,6 +32,20 @@ const Routing = () => {
 };
 
 function App() {
+  const authCtx = useContext(AuthContext);
+  const [isLoggedIn, setIsLoggedIn] = useState(authCtx.isLoggedIn);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoggedIn && window.location.pathname === "/products") {
+      navigate("/login");
+    }
+  }, []);
+
+  useEffect(() => {
+    setIsLoggedIn(authCtx.isLoggedIn);
+  }, [authCtx.isLoggedIn]);
+
   return (
     <div>
       <Routing />

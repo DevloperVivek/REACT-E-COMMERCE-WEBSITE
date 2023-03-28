@@ -5,6 +5,7 @@ const AuthContext = React.createContext({
   isLoggedIn: false,
   login: (token) => {},
   logout: () => {},
+  email: () => {},
 });
 
 export const AuthContextProvider = (props) => {
@@ -15,11 +16,10 @@ export const AuthContextProvider = (props) => {
   const userIsLoggedin = !!token;
 
   useEffect(() => {
-    setLogoutTimer(
-      setTimeout(() => {
-        logoutHandler();
-      }, 5 * 60 * 1000)
-    );
+    setLogoutTimer();
+    setTimeout(() => {
+      logoutHandler();
+    }, 5 * 60 * 1000);
     return () => {
       clearTimeout(logoutTimer);
     };
@@ -33,32 +33,29 @@ export const AuthContextProvider = (props) => {
         logoutHandler();
       }, 5 * 60 * 1000)
     );
-    console.log("timer set");
+    // console.log("Timer Set For " + localStorage.getItem("userEmail"));
+    console.log(localStorage.getItem("userEmail"));
   };
 
   const logoutHandler = () => {
-    setToken(null);
     localStorage.removeItem("token");
     clearTimeout(logoutTimer);
     setLogoutTimer(null);
-
-    console.log("timer unset");
+    // console.log("Timer Unset For " + localStorage.getItem("userEmail"));
+    console.log(localStorage.getItem("userEmail"));
+    setToken(null);
   };
 
-  const contextValue = {
-    token: token,
-    isLoggedIn: userIsLoggedin,
-    login: loginHandler,
-    logout: logoutHandler,
+  const emailHandler = () => {
+    localStorage.getItem("userEmail");
   };
 
   const handleUserInteraction = () => {
     clearTimeout(logoutTimer);
-    setLogoutTimer(
-      setTimeout(() => {
-        logoutHandler();
-      }, 5 * 60 * 1000)
-    );
+    setLogoutTimer();
+    setTimeout(() => {
+      logoutHandler();
+    }, 5 * 60 * 1000);
   };
 
   useEffect(() => {
@@ -70,6 +67,25 @@ export const AuthContextProvider = (props) => {
       document.removeEventListener("keydown", handleUserInteraction);
     };
   }, []);
+
+  const setTokenHandler = () => {
+    const Token = localStorage.getItem("token");
+    setToken(Token);
+  };
+
+  const clearTokenHadler = () => {
+    setToken(null);
+  };
+
+  const contextValue = {
+    token: token,
+    isLoggedIn: userIsLoggedin,
+    login: loginHandler,
+    logout: logoutHandler,
+    email: emailHandler,
+    setToken: setTokenHandler,
+    clearToken: clearTokenHadler,
+  };
 
   return (
     <AuthContext.Provider value={contextValue}>

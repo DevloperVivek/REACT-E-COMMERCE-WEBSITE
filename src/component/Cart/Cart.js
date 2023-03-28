@@ -1,41 +1,53 @@
-import { useContext } from "react";
-import CartContext from "../../store/cart-context";
+import { useContext, useEffect, useState } from "react";
+import CartContext from "../../context/cart-context";
 import Modal from "../UI/Modal";
 import classes from "./Cart.module.css";
 import CartItem from "./CartItem";
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
-  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
+  const userEmail = localStorage.getItem("userEmail");
+  const [cartItems, setCartItems] = useState([]);
+  const totalAmount = cartCtx.totalAmount;
   const hasItems = cartCtx.items.length > 0;
+  const apiUrl = `https://crudcrud.com/api/adfb83c3d10248f9afe208f9e30e732e/${
+    userEmail.split("@")[0]
+  }`;
 
-  const cartItemAddHandler = (item) => {
-    cartCtx.addItem({ ...item, quantity: 1 });
+  useEffect(() => {
+    setCartItems(cartCtx.items);
+  }, [cartCtx.items]);
+
+  const cartItemAddHandler = async (item) => {
+    cartCtx.addItem(item);
+    console.log("Item Is Added");
   };
 
   const cartItemReamoveHandler = (id) => {
+    console.log("cartItemRemoveHandler");
     cartCtx.removeItem(id);
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((item) => item.id !== id)
+    );
   };
-
-  const cartItems = (
-    <ul className={classes["cart-items"]}>
-      {cartCtx.items.map((item) => (
-        <CartItem
-          key={item.id}
-          title={item.title}
-          image={item.imageUrl}
-          price={item.price}
-          quantity={item.quantity}
-          onRemove={cartItemReamoveHandler.bind(null, item.id)}
-          onAdd={cartItemAddHandler.bind(null, item)}
-        />
-      ))}
-    </ul>
-  );
 
   return (
     <Modal className={classes.cart} onClose={props.onClose}>
-      <div>{cartItems}</div>
+      <div>
+        <ul className={classes["cart-items"]}>
+          {cartItems.map((item) => (
+            <CartItem
+              key={item.id}
+              title={item.title}
+              image={item.imageUrl}
+              price={item.price}
+              quantity={item.quantity}
+              onRemove={cartItemReamoveHandler.bind(null, item.id)}
+              onAdd={cartItemAddHandler.bind(null, item)}
+            />
+          ))}
+        </ul>
+      </div>
       <div>
         <span className={classes.total}>Total Amount</span>
         <span className={classes.total}>{totalAmount}</span>

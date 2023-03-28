@@ -1,6 +1,9 @@
 import React from "react";
 import classes from "./Home.module.css";
 
+const clickhandler = () => {
+  alert("Thank you For Purchase !");
+};
 const HomeList = (props) => {
   return (
     <li className={classes.item}>
@@ -11,7 +14,9 @@ const HomeList = (props) => {
           <span className={classes.description}>{props.description}</span>
         </div>
       </header>
-      <button className={classes.btn}>Buy Tickets </button>
+      <button onClick={clickhandler} className={classes.btn}>
+        Buy Tickets{" "}
+      </button>
     </li>
   );
 };

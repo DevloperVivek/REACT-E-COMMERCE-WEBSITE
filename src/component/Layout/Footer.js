@@ -1,4 +1,4 @@
-import classes from "./Home.module.css";
+import classes from "../Pages/Home.module.css";
 
 const Footer = () => {
   return (

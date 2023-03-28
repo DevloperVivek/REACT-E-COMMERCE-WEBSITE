@@ -1,11 +1,11 @@
 import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CartContext from "../../store/cart-context";
-import AuthContext from "../Auth/Auth-context";
+import AuthContext from "../../context/Auth-context";
 import classes from "./Contact.module.css";
+// import CartContext from "../../context/cart-context";
 
 const Login = () => {
-  const cartCtx = useContext(CartContext);
+  // const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -42,9 +42,11 @@ const Login = () => {
           response.json().then((data) => {
             setLoading(false);
             console.log(data);
-            localStorage.setItem("email", data.idToken);
-            cartCtx.setToken(data.token);
+            localStorage.setItem("token", data.idToken);
+            localStorage.setItem("userEmail", data.email);
+            // cartCtx.setToken(data.token);
             authCtx.login(data.idToken);
+            authCtx.email(data.email);
             navigate("/products");
           });
         } else {

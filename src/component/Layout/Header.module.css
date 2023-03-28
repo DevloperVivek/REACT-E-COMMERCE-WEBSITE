@@ -36,12 +36,17 @@
     color: aliceblue;
     margin: 0;
   }
-  
-  .navlinks li :hover,
-  .navlinks.active {
-    color: var(#5e5e5e)
+
+  .navlinks li :hover {
+    color:antiquewhite;
+    text-decoration: underline;
   }
 
+  .navlinks li a.active {
+    color: antiquewhite;
+    text-decoration: underline;
+  }
+  
   @media(max-width: 700px) {
     .header h1 {
       font-size: 14px;
@@ -61,9 +66,14 @@
     margin: 1px;
   }
   
-  .navlinks li :hover,
-  .navlinks.active {
+  .navlinks li :hover {
     color:antiquewhite;
     text-decoration: underline;
   }
+
+  .navlinks li a.active {
+    color: antiquewhite;
+    text-decoration: underline;
+  }
+  
 }
