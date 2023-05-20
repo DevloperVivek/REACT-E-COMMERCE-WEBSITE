@@ -6,11 +6,7 @@ const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
 
-  const userEmail = localStorage.getItem("userEmail");
-  const apiUrl = `https://crudcrud.com/api/4ff38609429a433993c92d5093a9197e/${
-    userEmail.split("@")[0]
-  }`;
-  let url = "https://crudcrud.com/api/4ff38609429a433993c92d5093a9197e/";
+  let url = "https://crudcrud.com/api/b45af7453e9d433c8c71e22342521315/";
 
   const defaultCart = {
     items: [],
@@ -75,16 +71,18 @@ const CartProvider = (props) => {
     let newItem;
     const email = localStorage.getItem("userEmail").split("@");
     const newUrl = url + email[0] + "/";
-    // console.log(newUrl);
+    console.log(newUrl);
     try {
       const old = await axios.get(newUrl);
       // console.log(old);
       let existed = false;
       if (old.data.length > 0) {
         let index;
+        let deleteId;
         old.data.forEach((element, i) => {
           if (element.id === item.id) {
             index = i;
+            deleteId = element._id;
             existed = true;
           }
         });
@@ -92,7 +90,7 @@ const CartProvider = (props) => {
           let obj = old.data[index];
           console.log(obj);
           dispatchCart({ type: "ADD", item: obj });
-          const deleteUrl = newUrl + old.data[index]._id;
+          const deleteUrl = newUrl + deleteId;
           await axios.delete(deleteUrl);
           obj = {
             id: obj.id,
@@ -119,7 +117,7 @@ const CartProvider = (props) => {
         quantity: 1,
         price: item.price,
       };
-      console.log(newItem);
+      // console.log(newItem);
       dispatchCart({ type: "ADD", item: newItem });
       await axios.post(newUrl, newItem);
     } catch (e) {

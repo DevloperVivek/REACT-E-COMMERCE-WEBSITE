@@ -14,7 +14,7 @@ const Header = (props) => {
 
   return (
     <header className={classes.header}>
-      <h1>The Generics</h1>
+      <h1>Ecomin</h1>
       <nav className={classes.nav}>
         <nav className={classes.nav}>
           <ul className={classes.navlinks}>
@@ -41,7 +41,6 @@ const Header = (props) => {
                 Home
               </NavLink>
             </li>
-            {/* {isLogin && ( */}
             <li>
               <NavLink
                 to="/products"
@@ -52,7 +51,6 @@ const Header = (props) => {
                 Store
               </NavLink>
             </li>
-            {/* )} */}
             <li>
               <NavLink
                 to="/about"

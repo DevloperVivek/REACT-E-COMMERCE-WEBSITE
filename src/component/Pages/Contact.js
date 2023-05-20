@@ -4,18 +4,15 @@ import classes from "./Contact.module.css";
 const Contact = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
-
     const formData = new FormData(event.target);
     const name = formData.get("name");
     const email = formData.get("email");
     const phone = formData.get("phone");
-
     const data = {
       name: name,
       email: email,
       phone: phone,
     };
-
     fetch(
       "https://ecomin-ce4d0-default-rtdb.asia-southeast1.firebasedatabase.app/contacts.json",
       {

@@ -65,48 +65,6 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-footer{
-  display:flex;
-  margin-top: 2rem;
-  padding:20px;
-  background: #56CCF2;
-}
-
-.footertitle{
-  text-align: center;
-  color:rgb(0, 0, 0);
-  font-size: 30px;
-  font-weight: bold;
-  margin-left: 10px;
-  margin-top: 10px;
-}
-
-footer .footericons{
-  width: 50px;
-  height: 50px;
-  display:flex;
-  align-items:center;
-  justify-content: space-around;
-}
-
-.footer-icons ul{
-  list-style-type: none;
-  display: flex;
-}
-
-.footer-icons li{
-  padding:10px;
-  margin: 10px;
-}
-
-.footer-icons li:hover{
-  background:rgb(63, 63, 63);
-}
-
-.footer-icons img{
-  width: 50px;
-}
-
 @media(max-width: 700px) {
   .ualign {
     margin: 1%;

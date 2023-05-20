@@ -33,16 +33,14 @@ export const AuthContextProvider = (props) => {
         logoutHandler();
       }, 5 * 60 * 1000)
     );
-    // console.log("Timer Set For " + localStorage.getItem("userEmail"));
-    console.log(localStorage.getItem("userEmail"));
+    // console.log(localStorage.getItem("userEmail"));
   };
 
   const logoutHandler = () => {
     localStorage.removeItem("token");
     clearTimeout(logoutTimer);
     setLogoutTimer(null);
-    // console.log("Timer Unset For " + localStorage.getItem("userEmail"));
-    console.log(localStorage.getItem("userEmail"));
+    // console.log(localStorage.getItem("userEmail"));
     setToken(null);
   };
 

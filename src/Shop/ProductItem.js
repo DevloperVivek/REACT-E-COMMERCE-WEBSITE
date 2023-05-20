@@ -8,7 +8,7 @@ const ProductItem = (props) => {
   const cartCtx = useContext(CartContext);
 
   const userEmail = localStorage.getItem("userEmail");
-  const apiUrl = `https://crudcrud.com/api/4ff38609429a433993c92d5093a9197e/${
+  const apiUrl = `https://crudcrud.com/api/74871171d3364911be400d605eaf0a23/${
     userEmail.split("@")[0]
   }`;
 
@@ -32,7 +32,6 @@ const ProductItem = (props) => {
         price: response.data.price,
       };
       cartCtx.addItem(newItem);
-      // console.log(cartCtx.items);
     } catch (error) {
       console.error(error);
     }

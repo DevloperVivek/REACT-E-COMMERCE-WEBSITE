@@ -2,11 +2,9 @@ import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/Auth-context";
 import classes from "./Contact.module.css";
-// import CartContext from "../../context/cart-context";
 
 const Signup = () => {
   const authCtx = useContext(AuthContext);
-  // const cartCtx = useContext(CartContext);
   const navigate = useNavigate();
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -17,7 +15,6 @@ const Signup = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
-
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 

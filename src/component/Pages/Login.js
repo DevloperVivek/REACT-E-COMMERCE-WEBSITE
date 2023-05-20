@@ -2,24 +2,18 @@ import React, { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/Auth-context";
 import classes from "./Contact.module.css";
-// import CartContext from "../../context/cart-context";
 
 const Login = () => {
-  // const cartCtx = useContext(CartContext);
   const authCtx = useContext(AuthContext);
-
   const navigate = useNavigate();
-
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setLoading(true);
-
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
@@ -44,7 +38,6 @@ const Login = () => {
             console.log(data);
             localStorage.setItem("token", data.idToken);
             localStorage.setItem("userEmail", data.email);
-            // cartCtx.setToken(data.token);
             authCtx.login(data.idToken);
             authCtx.email(data.email);
             navigate("/products");

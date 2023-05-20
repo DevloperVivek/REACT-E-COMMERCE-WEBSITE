@@ -1,4 +1,4 @@
-import classes from "./about.module.css";
+import classes from "./About.module.css";
 
 export default function About() {
   return (
@@ -36,6 +36,7 @@ export default function About() {
           </p>
         </div>
       </div>
+      <div className={classes.empty}></div>
     </div>
   );
 }

@@ -19,10 +19,10 @@ root.render(
           <CartProvider>
             <App />
           </CartProvider>
-          <Footer />
         </BrowserRouter>
       </AuthContextProvider>
     </CartProvider>
+    <Footer />
   </React.StrictMode>
 );
 

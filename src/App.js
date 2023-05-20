@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import AuthContext from "./context/Auth-context";
-import About from "./component/Pages/about";
+import About from "./component/Pages/About";
 import ChangePassword from "./component/Pages/ChangePassword.js";
 import Contact from "./component/Pages/Contact";
 import Home from "./component/Pages/Home";

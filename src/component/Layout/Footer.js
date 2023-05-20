@@ -1,17 +1,14 @@
-import classes from "../Pages/Home.module.css";
+import classes from "./Footer.module.css";
 
 const Footer = () => {
   return (
     <footer>
-      <h1 className={classes.footertitle}>The Generics</h1>
+      <h1 className={classes.footertitle}>Ecomin</h1>
       <div className={classes.footericons}>
         <ul>
           <li>
             <a href="https://www.youtube.com">
-              <img
-                // src="https://www.iconfinder.com/icons/3225180/app_logo_media_popular_social_youtube_icon"
-                alt=""
-              />
+              {/* <img src={youtube} alt="Youtube" /> */}
             </a>
           </li>
           <li>

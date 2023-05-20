@@ -4,20 +4,13 @@ import classes from "./ChangePassword.module.css";
 
 const ChangePassword = () => {
   const newPasswordInputRef = useRef();
-
   const authCtx = useContext(AuthContext);
-
-  // const [loading, setLoading] = useState(false);
-  // const [success, setSuccess] = useState(false);
-  // const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
   const [newPassword, setNewPassword] = useState("");
 
   const handleChangePassword = (event) => {
     event.preventDefault();
-    // setLoading(true);
-
     const enteredNewPassword = newPasswordInputRef.current.value;
-
     fetch(
       "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDNFisNSnZdhT0kZ0GNIAbNZBf9N_aB4r0",
       {
@@ -34,37 +27,37 @@ const ChangePassword = () => {
     )
       .then((response) => {
         console.log(response + "Password Changed Succesfully");
-        // setLoading(false);
         if (response.ok) {
           console.log(newPassword);
-          // setSuccess(true);
         } else {
-          // setError("Unable to change password. Please try again.");
+          setError("Unable to change password. Please try again.");
         }
       })
       .catch((error) => {
-        // setLoading(false);
         console.log(error);
-        // setError("Unable to change password. Please try again.");
+        setError("Unable to change password. Please try again.");
       });
   };
 
   return (
-    <div className={classes.card}>
-      <h3>Change Password</h3>
-      <form id="contact-form" onSubmit={handleChangePassword}>
-        <div className={classes.control}>
-          <label htmlFor="name">New Password</label>
-          <input
-            type="password"
-            id="new-password"
-            ref={newPasswordInputRef}
-            onChange={(event) => setNewPassword(event.target.value)}
-          />
-          <br />
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
+    <div>
+      <div className={classes.card}>
+        <h3>Change Password</h3>
+        <form id="contact-form" onSubmit={handleChangePassword}>
+          <div className={classes.control}>
+            <label htmlFor="name">New Password</label>
+            <input
+              type="password"
+              id="new-password"
+              ref={newPasswordInputRef}
+              onChange={(event) => setNewPassword(event.target.value)}
+            />
+            <br />
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
+      </div>
+      <div className={classes.empty}></div>
     </div>
   );
 };

@@ -6,13 +6,9 @@ import CartItem from "./CartItem";
 
 const Cart = (props) => {
   const cartCtx = useContext(CartContext);
-  const userEmail = localStorage.getItem("userEmail");
   const [cartItems, setCartItems] = useState([]);
   const totalAmount = cartCtx.totalAmount;
   const hasItems = cartCtx.items.length > 0;
-  const apiUrl = `https://crudcrud.com/api/adfb83c3d10248f9afe208f9e30e732e/${
-    userEmail.split("@")[0]
-  }`;
 
   useEffect(() => {
     setCartItems(cartCtx.items);

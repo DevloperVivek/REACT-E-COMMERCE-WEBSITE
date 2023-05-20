@@ -59,7 +59,7 @@ const Products = () => {
     <div>
       {cartIsShown && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
-      <h2 className={classes.generics}>The Generics</h2>
+      <h2 className={classes.generics}>Ecomin</h2>
       <h1 className={classes.title}>Products</h1>
       <ul className={classes.ualign}>{productsList}</ul>
     </div>
