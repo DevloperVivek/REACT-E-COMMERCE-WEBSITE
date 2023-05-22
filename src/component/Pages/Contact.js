@@ -14,7 +14,7 @@ const Contact = () => {
       phone: phone,
     };
     fetch(
-      "https://ecomin-ce4d0-default-rtdb.asia-southeast1.firebasedatabase.app/contacts.json",
+      "https://react-e-commerce-site-6a24c-default-rtdb.asia-southeast1.firebasedatabase.app/contacts.json",
       {
         method: "POST",
         body: JSON.stringify(data),

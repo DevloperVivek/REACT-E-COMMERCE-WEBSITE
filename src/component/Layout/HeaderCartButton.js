@@ -12,8 +12,9 @@ const HeaderCartButton = (props) => {
   const numberOfCartItems = cartCtx.items.length;
 
   const fetchCartItems = () => {
-    const url = "https://crudcrud.com/api/74871171d3364911be400d605eaf0a23/";
-    const email = localStorage.getItem("token").split("@");
+    const url =
+      "https://react-e-commerce-site-6a24c-default-rtdb.asia-southeast1.firebasedatabase.app/";
+    const email = localStorage.getItem("userEmail").split("@");
     const newUrl = url + email[0];
     fetch(newUrl)
       .then((response) => response.json())

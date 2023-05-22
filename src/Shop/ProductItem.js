@@ -8,7 +8,7 @@ const ProductItem = (props) => {
   const cartCtx = useContext(CartContext);
 
   const userEmail = localStorage.getItem("userEmail");
-  const apiUrl = `https://crudcrud.com/api/74871171d3364911be400d605eaf0a23/${
+  const apiUrl = `https://react-e-commerce-site-6a24c-default-rtdb.asia-southeast1.firebasedatabase.app/${
     userEmail.split("@")[0]
   }`;
 
@@ -21,19 +21,22 @@ const ProductItem = (props) => {
   };
 
   const addToCartHandler = async () => {
-    console.log("addToCartHandler");
     try {
-      const response = await axios.post(apiUrl, obj);
-      const newItem = {
-        id: response.data.id,
-        title: response.data.title,
-        imageUrl: response.data.imageUrl,
-        quantity: response.data.quantity,
-        price: response.data.price,
-      };
-      cartCtx.addItem(newItem);
-    } catch (error) {
-      console.error(error);
+      fetch(
+        `https://react-e-commerce-site-6a24c-default-rtdb.asia-southeast1.firebasedatabase.app/products/${
+          userEmail.split("@")[0]
+        }.json`,
+        {
+          method: "POST",
+          body: JSON.stringify(obj),
+          headers: {
+            "Content-type": "application/json",
+          },
+        }
+      ).then((data) => console.log(data));
+      cartCtx.addItem(obj);
+    } catch (e) {
+      console.log(e);
     }
   };
 

@@ -12,7 +12,7 @@ const ChangePassword = () => {
     event.preventDefault();
     const enteredNewPassword = newPasswordInputRef.current.value;
     fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyDNFisNSnZdhT0kZ0GNIAbNZBf9N_aB4r0",
+      "https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyBzaSGCQNA30Vhou9eLnB8dVYDMV-aANbA",
       {
         method: "POST",
         body: JSON.stringify({

@@ -6,7 +6,8 @@ const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
 
-  let url = "https://crudcrud.com/api/b45af7453e9d433c8c71e22342521315/";
+  let url =
+    "https://react-e-commerce-site-6a24c-default-rtdb.asia-southeast1.firebasedatabase.app/products/";
 
   const defaultCart = {
     items: [],
@@ -67,14 +68,14 @@ const CartProvider = (props) => {
   const [cartState, dispatchCart] = useReducer(cartReducer, defaultCart);
 
   const addItemHandler = async (item) => {
-    // console.log("Added Item", item);
+    console.log("Added Item", item);
     let newItem;
     const email = localStorage.getItem("userEmail").split("@");
-    const newUrl = url + email[0] + "/";
+    const newUrl = url + email[0];
     console.log(newUrl);
     try {
       const old = await axios.get(newUrl);
-      // console.log(old);
+      console.log(old);
       let existed = false;
       if (old.data.length > 0) {
         let index;
@@ -99,12 +100,12 @@ const CartProvider = (props) => {
             quantity: obj.quantity,
             price: obj.price,
           };
-          // console.table(obj);
+          console.table(obj);
           await axios.post(newUrl, obj);
           return;
         } else {
           newItem = { quantity: 1, ...item };
-          // console.log(newItem);
+          console.log(newItem);
           dispatchCart({ type: "ADD", item: newItem });
           await axios.post(newUrl, newItem);
           return;
@@ -129,7 +130,7 @@ const CartProvider = (props) => {
   const removeItemHandler = async (id) => {
     dispatchCart({ type: "REMOVE", id: id });
     const email = localStorage.getItem("userEmail").split("@");
-    const newUrl = url + email[0] + "/";
+    const newUrl = url + email[0];
     try {
       const old = await axios.get(newUrl);
       let deleteId;
