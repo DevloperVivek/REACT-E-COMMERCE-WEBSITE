@@ -1,18 +1,16 @@
-import React, { useReducer, useState } from "react";
+import React, { useReducer, useEffect } from "react";
 import CartContext from "./cart-context";
 import axios from "axios";
 
 const CartProvider = (props) => {
-  const [cartItems, setCartItems] = useState([]);
-  const [totalAmount, setTotalAmount] = useState(0);
-
-  let url =
-    "https://react-e-commerce-site-6a24c-default-rtdb.asia-southeast1.firebasedatabase.app/products/";
-
   const defaultCart = {
     items: [],
     totalAmount: 0,
   };
+
+  const email = localStorage.getItem("userEmail") ?? "";
+  const userId = email.split("@")[0];
+  const url = `https://ecom-react-site-default-rtdb.asia-southeast1.firebasedatabase.app/products/${userId}.json`;
 
   const cartReducer = (state, action) => {
     if (action.type === "ADD") {
@@ -20,19 +18,17 @@ const CartProvider = (props) => {
         (item) => item.id === action.item.id
       );
 
-      const existingCartItem = state.items[existingCartItemIndex];
-      if (existingCartItem) {
-        let newItems = state.items.filter(
-          (e, i) => i !== existingCartItemIndex
-        );
+      if (existingCartItemIndex !== -1) {
+        const existingCartItem = state.items[existingCartItemIndex];
         const updatedItem = {
           ...existingCartItem,
           quantity: existingCartItem.quantity + 1,
         };
-        newItems = [updatedItem, ...newItems];
+        const updatedItems = [...state.items];
+        updatedItems[existingCartItemIndex] = updatedItem;
         return {
-          items: newItems,
-          totalAmount: state.totalAmount + existingCartItem.price,
+          items: updatedItems,
+          totalAmount: state.totalAmount + action.item.price,
         };
       } else {
         return {
@@ -40,114 +36,89 @@ const CartProvider = (props) => {
           totalAmount: state.totalAmount + action.item.price,
         };
       }
-    }
-
-    if (action.type === "REMOVE") {
+    } else if (action.type === "REMOVE") {
       const existingCartItemIndex = state.items.findIndex(
         (item) => item.id === action.id
       );
+
+      if (existingCartItemIndex === -1) {
+        return state;
+      }
+
       const existingCartItem = state.items[existingCartItemIndex];
+      const updatedItem = {
+        ...existingCartItem,
+        quantity: existingCartItem.quantity - 1,
+      };
+
       let updatedItems;
-      if (existingCartItem.quantity === 1) {
+      if (updatedItem.quantity <= 0) {
         updatedItems = state.items.filter((item) => item.id !== action.id);
       } else {
-        const updatedItem = {
-          ...existingCartItem,
-          quantity: existingCartItem.quantity - 1,
-        };
-        const newItems = state.items.filter((item) => item.id !== action.id);
-        updatedItems = [updatedItem, ...newItems];
+        updatedItems = [...state.items];
+        updatedItems[existingCartItemIndex] = updatedItem;
       }
+
       return {
         items: updatedItems,
         totalAmount: state.totalAmount - existingCartItem.price,
       };
+    } else if (action.type === "SET") {
+      return {
+        items: action.cartData.items,
+        totalAmount: action.cartData.totalAmount,
+      };
     }
+
+    return state;
   };
 
   const [cartState, dispatchCart] = useReducer(cartReducer, defaultCart);
 
-  const addItemHandler = async (item) => {
-    console.log("Added Item", item);
-    let newItem;
-    const email = localStorage.getItem("userEmail").split("@");
-    const newUrl = url + email[0];
-    console.log(newUrl);
-    try {
-      const old = await axios.get(newUrl);
-      console.log(old);
-      let existed = false;
-      if (old.data.length > 0) {
-        let index;
-        let deleteId;
-        old.data.forEach((element, i) => {
-          if (element.id === item.id) {
-            index = i;
-            deleteId = element._id;
-            existed = true;
-          }
-        });
-        if (existed) {
-          let obj = old.data[index];
-          console.log(obj);
-          dispatchCart({ type: "ADD", item: obj });
-          const deleteUrl = newUrl + deleteId;
-          await axios.delete(deleteUrl);
-          obj = {
-            id: obj.id,
-            title: obj.title,
-            imageUrl: obj.imageUrl,
-            quantity: obj.quantity,
-            price: obj.price,
-          };
-          console.table(obj);
-          await axios.post(newUrl, obj);
-          return;
-        } else {
-          newItem = { quantity: 1, ...item };
-          console.log(newItem);
-          dispatchCart({ type: "ADD", item: newItem });
-          await axios.post(newUrl, newItem);
-          return;
-        }
-      }
-      newItem = {
-        id: item.id,
-        title: item.title,
-        imageUrl: item.imageUrl,
-        quantity: 1,
-        price: item.price,
-      };
-      // console.log(newItem);
-      dispatchCart({ type: "ADD", item: newItem });
-      await axios.post(newUrl, newItem);
-    } catch (e) {
-      console.log(e);
-    }
-    dispatchCart({ type: "ADD", item: item });
+  const addItemHandler = (item) => {
+    dispatchCart({
+      type: "ADD",
+      item: item,
+    });
   };
 
-  const removeItemHandler = async (id) => {
-    dispatchCart({ type: "REMOVE", id: id });
-    const email = localStorage.getItem("userEmail").split("@");
-    const newUrl = url + email[0];
-    try {
-      const old = await axios.get(newUrl);
-      let deleteId;
-      old.data.forEach((element) => {
-        if (element.id === id) {
-          deleteId = element._id;
-        }
-      });
-      if (deleteId) {
-        const data = await axios.delete(newUrl + deleteId);
-        setCartItems(data.items);
-        setTotalAmount(data.totalAmount);
-      }
-    } catch (e) {
-      console.log(e);
-    }
+  const removeItemHandler = (id) => {
+    dispatchCart({
+      type: "REMOVE",
+      id: id,
+    });
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(url);
+        const cartData = response.data;
+        if (cartData) {
+          dispatchCart({
+            type: "SET",
+            cartData: cartData,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  useEffect(() => {
+    const sendCartData = async () => {
+      try {
+        await axios.put(url, cartState.items);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    sendCartData();
+  }, [url, cartState]);
 
   const cartContext = {
     items: cartState.items,

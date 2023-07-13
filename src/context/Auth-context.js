@@ -12,14 +12,13 @@ export const AuthContextProvider = (props) => {
   const initialToken = localStorage.getItem("token");
   const [token, setToken] = useState(initialToken);
   const [logoutTimer, setLogoutTimer] = useState(null);
-
   const userIsLoggedin = !!token;
 
   useEffect(() => {
     setLogoutTimer();
     setTimeout(() => {
       logoutHandler();
-    }, 5 * 60 * 1000);
+    }, 15 * 60 * 1000);
     return () => {
       clearTimeout(logoutTimer);
     };
@@ -31,16 +30,14 @@ export const AuthContextProvider = (props) => {
     setLogoutTimer(
       setTimeout(() => {
         logoutHandler();
-      }, 5 * 60 * 1000)
+      }, 15 * 60 * 1000)
     );
-    // console.log(localStorage.getItem("userEmail"));
   };
 
   const logoutHandler = () => {
     localStorage.removeItem("token");
     clearTimeout(logoutTimer);
     setLogoutTimer(null);
-    // console.log(localStorage.getItem("userEmail"));
     setToken(null);
   };
 
@@ -53,7 +50,7 @@ export const AuthContextProvider = (props) => {
     setLogoutTimer();
     setTimeout(() => {
       logoutHandler();
-    }, 5 * 60 * 1000);
+    }, 15 * 60 * 1000);
   };
 
   useEffect(() => {

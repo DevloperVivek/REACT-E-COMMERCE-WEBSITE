@@ -1,0 +1,40 @@
+  .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    padding: 20px;
+    background: #56CCF2;
+  }
+  
+  .footericons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .footerIconsList {
+    list-style-type: none;
+    display: flex;
+  }
+  
+  .footerIconsList li {
+    padding: 0;
+    margin: 5px;
+  }
+  
+  .footerIconsList li:hover {
+    background: rgb(63, 63, 63);
+  }
+  
+  .footerIconsList img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  @media (max-width: 700px) {
+    .ualign {
+      margin: 1%;
+    }
+  }
+  

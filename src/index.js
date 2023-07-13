@@ -1,17 +1,16 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import Header from "./component/Layout/Header";
 import { AuthContextProvider } from "./context/Auth-context";
 import CartProvider from "./context/CartProvider";
-import Footer from "./component/Layout/Footer";
+import Header from "./component/Layout/Header/Header/Header";
+import Footer from "./component/Layout/Footer/Footer";
+import App from "./App";
+import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <Fragment>
     <CartProvider>
       <AuthContextProvider>
         <BrowserRouter>
@@ -23,7 +22,5 @@ root.render(
       </AuthContextProvider>
     </CartProvider>
     <Footer />
-  </React.StrictMode>
+  </Fragment>
 );
-
-reportWebVitals();

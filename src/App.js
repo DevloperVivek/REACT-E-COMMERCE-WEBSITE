@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import AuthContext from "./context/Auth-context";
-import About from "./component/Pages/About";
-import ChangePassword from "./component/Pages/ChangePassword.js";
-import Contact from "./component/Pages/Contact";
-import Home from "./component/Pages/Home";
-import Login from "./component/Pages/Login";
-import Signup from "./component/Pages/Signup";
-import ProductDetail from "./Shop/ProductDetail";
-import Products from "./Shop/Products";
+import Home from "./component/Pages/Home/Home";
+import ProductDetail from "./Store/Product Details/ProductDetail";
+import Products from "./Store/Products/Products";
+import About from "./component/Pages/About/About";
+import ChangePassword from "./component/Pages/Change Password/ChangePassword.js";
+import Contact from "./component/Pages/Contact/Contact";
+import Signup from "./component/Pages/Signup/Signup";
+import Login from "./component/Pages/Login/Login";
 
 const Routing = () => {
   const authCtx = useContext(AuthContext);
@@ -25,8 +25,8 @@ const Routing = () => {
         <Route path="/products/:productId" element={<ProductDetail />} />
       )}
       <Route path="/signup" element={<Signup />} />
-      <Route path="*" element={<Navigate to={"/login"} />} />
       <Route path="/login" element={<Login />} />
+      <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   );
 };
@@ -37,10 +37,10 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!isLoggedIn && window.location.pathname === "/products") {
+    if (!isLoggedIn && window.location.pathname !== "/login" && "/") {
       navigate("/login");
     }
-  }, []);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     setIsLoggedIn(authCtx.isLoggedIn);
