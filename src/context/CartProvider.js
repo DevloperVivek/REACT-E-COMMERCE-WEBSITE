@@ -64,13 +64,15 @@ const CartProvider = (props) => {
         totalAmount: state.totalAmount - existingCartItem.price,
       };
     } else if (action.type === "SET") {
+      const updatedTotalAmount = action.cartData.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
       return {
-        items: action.cartData.items,
-        totalAmount: action.cartData.totalAmount,
+        items: action.cartData,
+        totalAmount: updatedTotalAmount,
       };
     }
-
-    return state;
   };
 
   const [cartState, dispatchCart] = useReducer(cartReducer, defaultCart);
@@ -95,6 +97,7 @@ const CartProvider = (props) => {
         const response = await axios.get(url);
         const cartData = response.data;
         if (cartData) {
+          console.log(cartData);
           dispatchCart({
             type: "SET",
             cartData: cartData,

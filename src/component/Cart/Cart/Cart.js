@@ -15,12 +15,14 @@ const Cart = (props) => {
     "https://ecom-react-site-default-rtdb.asia-southeast1.firebasedatabase.app/products/";
   const userEmail = localStorage.getItem("userEmail");
   const url = `${apiurl}${userEmail.split("@")[0]}.json`;
+  console.log(url);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
         if (response.data) {
+          console.log(response);
           const fetchedCartItems = Object.values(response.data);
           setCartItems(fetchedCartItems);
         }
