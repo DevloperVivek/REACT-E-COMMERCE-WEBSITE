@@ -104,6 +104,7 @@ const Products = () => {
       <div className={classes.bgCover}>
         <div className={classes.coverText}>
           <h2>Online Store</h2>
+          <p>Check the latest offers and brand new products in the store</p>
         </div>
       </div>
       <h1 className={classes.title}>Products</h1>

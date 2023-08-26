@@ -18,7 +18,6 @@
   color: rgb(255, 255, 255);
   text-transform: uppercase;
   font-size: 40px;
-  font-family: "Metal Mania";
   line-height: 1px;
   text-align: center;
 }
@@ -53,7 +52,12 @@
 }
 
 @media (max-width: 700px) {
-
+  .coverText {
+    font-size: 20px;
+  }
+  .coverText p{
+    font-size: 10px;
+  }
   .list {
     grid-template-columns: repeat(1, 1fr);
     margin: 0 auto;

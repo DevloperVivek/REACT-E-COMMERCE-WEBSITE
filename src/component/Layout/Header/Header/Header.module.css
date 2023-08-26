@@ -48,13 +48,13 @@
 
 @media (max-width: 700px) {
   .header h1 {
-    font-size: 20px;
+    font-size: 12px;
     margin: 2%;
   }
 
   .header .navlinks li {
     display: inline-block;
-    padding: 0px 5px;
+    padding: 0px 4px;
     margin: auto;
   }
 
