@@ -2,41 +2,25 @@ import classes from "./About.module.css";
 
 export default function About() {
   return (
-    <div>
-      <div className={classes.title}>
-        <h1>About</h1>
-        <div>
-          <img
-            className={classes.image}
-            src="https://prasadyash2411.github.io/ecom-website/img/Band%20Members.png"
-            alt=""
-          />
+    <div className={classes.about}>
+      <div className={classes.centerContent}>
+        <div className={classes.content}>
+          <h1>About Us</h1>
           <p className={classes.para}>
-            Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
-            sorrows, hates no prosecutors will unfold in the enduring of which
-            were born in it? Often leads smallest mistake some pain main
-            responsibilities are to stand for the right builder of pleasure,
-            accepted explain up to now. , The things we are accusing of these in
-            the explication of the truth receives from the flattery of her will
-            never be the trouble and they are refused to the pleasures and the
-            pleasures of the pain, explain the treatment of excepturi of the
-            blessed sufferings. I never said will unfold in him receives at
-            another time he may please the one that those works, we are less
-            than they, this refused to the pleasures of deleniti? Those are!
-            Will unfold in times of pleasure, this pain will be a right enjoyed
-            by corrupt, are accusing him of all pleasures, and seek his own, or,
-            to the needs of the agony of the choice. We hate the fellow. Lorem
-            ipsum dolor, sit amet consectetur rebates. The distinction, that
-            arise from or to. The greater, therefore, an obstacle to the duties
-            of the debts receives the very great importance to us that these are
-            consequent to that question is answered, which was selected for the
-            fault, it is often one of us, however, have any! Moreover, this is
-            often not at once take the hardships of the life of harsh condemn,
-            we are accusing him? Him whom something large cisterns.
+            Welcome to our e-commerce website! We take immense pride in curating
+            a diverse collection of the most unique and high-quality products.
+            With a commitment to excellence, we provide a seamless online
+            shopping experience that caters to your needs and preferences. Our
+            dedication to sourcing products that stand out for their exceptional
+            quality and innovation sets us apart. Whether you're looking for the
+            latest electronics, trendy fashion pieces, exquisite jewelry, home
+            essentials, or anything else, you'll find it here. Explore our
+            curated selection and discover items that reflect your style and
+            aspirations. Thank you for choosing us as your go-to destination for
+            premium products.
           </p>
         </div>
       </div>
-      <div className={classes.empty}></div>
     </div>
   );
 }

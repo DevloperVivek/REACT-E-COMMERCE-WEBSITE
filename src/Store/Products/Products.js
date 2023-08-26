@@ -3,6 +3,7 @@ import Cart from "../../component/Cart/Cart/Cart";
 import Header from "../../component/Layout/Header/Header/Header";
 import ProductItem from "../ProductItems/ProductItem";
 import classes from "./Products.module.css";
+import CartProvider from "../../context/CartProvider";
 
 const productsArr = [
   {
@@ -98,13 +99,19 @@ const Products = () => {
   ));
 
   return (
-    <div>
-      {cartIsShown && <Cart onClose={hideCartHandler} />}
-      <Header onShowCart={showCartHandler} />
-      <h2 className={classes.generics}>Ecomin</h2>
-      <h1 className={classes.title}>Products</h1>
-      <ul className={classes.ualign}>{productsList}</ul>
-    </div>
+    <CartProvider>
+      <div className={classes.container}>
+        <Header onShowCart={showCartHandler} />
+        <div className={classes.bgCover}>
+          <div className={classes.coverText}>
+            <h2>Online Store</h2>
+          </div>
+        </div>
+        <h1 className={classes.title}>Products</h1>
+        <ul className={classes.list}>{productsList}</ul>
+        {cartIsShown && <Cart onClose={hideCartHandler} />}
+      </div>
+    </CartProvider>
   );
 };
 

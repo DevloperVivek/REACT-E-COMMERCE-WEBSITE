@@ -15,14 +15,12 @@ const Cart = (props) => {
     "https://ecom-react-site-default-rtdb.asia-southeast1.firebasedatabase.app/products/";
   const userEmail = localStorage.getItem("userEmail");
   const url = `${apiurl}${userEmail.split("@")[0]}.json`;
-  console.log(url);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
         if (response.data) {
-          console.log(response);
           const fetchedCartItems = Object.values(response.data);
           setCartItems(fetchedCartItems);
         }
@@ -30,37 +28,12 @@ const Cart = (props) => {
         console.error("Error fetching cart items: ", error);
       }
     };
-
     fetchData();
   }, [url]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(url);
-
-        if (response.data) {
-          const fetchedCartItems = Object.values(response.data).map((item) => ({
-            id: item.id,
-            imageUrl: item.imageUrl,
-            price: item.price,
-            quantity: item.quantity,
-            title: item.title,
-          }));
-
-          setCartItems(fetchedCartItems);
-        }
-      } catch (error) {
-        console.error("Error fetching cart items: ", error);
-      }
-    };
-
-    fetchData();
-  }, [url]);
-
-  const cartItemAddHandler = async (item) => {
+  const cartItemAddHandler = (item) => {
     try {
-      await cartCtx.addItem(item);
+      cartCtx.addItem(item);
       const updatedCartItems = cartItems.map((cartItem) => {
         if (cartItem.id === item.id) {
           return { ...cartItem, quantity: cartItem.quantity + 1 };
@@ -73,9 +46,9 @@ const Cart = (props) => {
     }
   };
 
-  const cartItemRemoveHandler = async (id) => {
+  const cartItemRemoveHandler = (id) => {
     try {
-      await cartCtx.removeItem(id);
+      cartCtx.removeItem(id);
       const updatedCartItems = cartItems.map((cartItem) => {
         if (cartItem.id === id) {
           return { ...cartItem, quantity: cartItem.quantity - 1 };

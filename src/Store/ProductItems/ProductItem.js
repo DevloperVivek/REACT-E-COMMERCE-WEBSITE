@@ -16,7 +16,6 @@ const ProductItem = (props) => {
 
   const addToCartHandler = async () => {
     cartCtx.addItem(obj);
-    console.log(obj);
   };
 
   return (

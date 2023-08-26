@@ -1,39 +1,66 @@
-.generics {
-    margin-top: 5rem;
-    background-color: #777;
-    padding: 3rem;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 60px;
-  }
+.bgCover {
+  background-image: url("https://img.freepik.com/free-photo/young-woman-yellow-leather-jacket-copy-space_23-2148674153.jpg?w=1060&t=st=1693040554~exp=1693041154~hmac=fd0e86dc5929f5d66e04e5a33b7eee917b76cc47d2feec5679ff7e02ae588d7d");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 400px;
+  width: 100%;
+  background-size: cover;
+  object-fit: cover;
+  background-attachment: fixed;
+  background-color: rgba(255, 198, 66, 0.8);
+}
+
+.coverText {
+  margin-top: 5rem;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  font-size: 40px;
+  font-family: "Metal Mania";
+  line-height: 1px;
+  text-align: center;
+}
+
+.coverText p {
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+}
 
 .title {
-    font-family: "Metal Mania";
-    font-style: inherit;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    color: black;
-    text-align: center;
+  font-family: "Metal Mania";
+  font-style: inherit;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  color: black;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .ualign {
+  display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 25%;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 2rem;
 }
 
 .item {
   display: flex;
   justify-content: space-between;
-  margin: 1rem 2rem;
+  align-items: center;
+  width: calc(100% - 4rem);
+  margin: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ffb391;
 }
 
 .item h3 {
-  margin-top: 7rem;
-  margin: 0.5rem 0.5rem;
+  margin: 0.5rem;
   font-size: 1rem;
 }
 
@@ -44,29 +71,44 @@
 }
 
 .date {
-  padding: 0px 10px;
+  padding: 0 10px;
   width: 10px;
 }
 
 .place {
-  padding: 0px 25px;
+  padding: 0 25px;
   width: 20px;
 }
 
 .btn {
   width: 6rem;
-  background: #56CCF2;
+  background: #ffb351;
   color: white;
   border: none;
   padding: 7px;
   margin-left: 2rem;
   border-radius: 5px;
   font-weight: 700;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-@media(max-width: 700px) {
+@media (max-width: 700px) {
+  .coverText {
+    font-size: 30px;
+  }
+  .coverText p{
+    font-size: 12px;
+  }
   .ualign {
-    margin: 1%;
+    padding: 0 1rem;
+  }
+  .item {
+    width: calc(100% - 2rem);
+    font-size: 12px;
+    overflow: hidden;
+    margin: 1rem 0;
+  }
+  .btn {
+    font-size: 10px;
+    width: 70px;
   }
 }

@@ -17,7 +17,6 @@ const CartProvider = (props) => {
       const existingCartItemIndex = state.items.findIndex(
         (item) => item.id === action.item.id
       );
-
       if (existingCartItemIndex !== -1) {
         const existingCartItem = state.items[existingCartItemIndex];
         const updatedItem = {
@@ -40,17 +39,14 @@ const CartProvider = (props) => {
       const existingCartItemIndex = state.items.findIndex(
         (item) => item.id === action.id
       );
-
       if (existingCartItemIndex === -1) {
         return state;
       }
-
       const existingCartItem = state.items[existingCartItemIndex];
       const updatedItem = {
         ...existingCartItem,
         quantity: existingCartItem.quantity - 1,
       };
-
       let updatedItems;
       if (updatedItem.quantity <= 0) {
         updatedItems = state.items.filter((item) => item.id !== action.id);
@@ -58,7 +54,6 @@ const CartProvider = (props) => {
         updatedItems = [...state.items];
         updatedItems[existingCartItemIndex] = updatedItem;
       }
-
       return {
         items: updatedItems,
         totalAmount: state.totalAmount - existingCartItem.price,
@@ -97,7 +92,6 @@ const CartProvider = (props) => {
         const response = await axios.get(url);
         const cartData = response.data;
         if (cartData) {
-          console.log(cartData);
           dispatchCart({
             type: "SET",
             cartData: cartData,
@@ -107,7 +101,6 @@ const CartProvider = (props) => {
         console.log(error);
       }
     };
-
     fetchData();
   }, [url]);
 
@@ -119,7 +112,6 @@ const CartProvider = (props) => {
         console.log(error);
       }
     };
-
     sendCartData();
   }, [url, cartState]);
 

@@ -81,12 +81,12 @@ const Login = () => {
         </div>
       </form>
       {error && <p>{error}</p>}
-      <p>
-        Don't have an account yet?
-        <button className={classes.btn} type="button" onClick={navigateHandler}>
-          Signup
-        </button>
-      </p>
+      <div className={classes.toggle}>
+        <p>
+          Don't have an account yet?{" "}
+          <span onClick={navigateHandler}>Signup Now</span>
+        </p>
+      </div>
     </div>
   );
 };
