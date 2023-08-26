@@ -12,48 +12,44 @@ const Signup = () => {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
+
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
 
-    fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCT-nS4GcoUSHjEgigK-wmCxCEpLe8FxM8",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          email: enteredEmail,
-          password: enteredPassword,
-          returnSecureToken: true,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          response.json().then((response) => {
-            setLoading(false);
-            setSuccess(true);
-            console.log(response);
-            localStorage.setItem("token", response.idToken);
-            authCtx.setToken(response.idToken);
-            navigate("/login");
-            console.log("Signed up Successfully");
-          });
-        } else {
-          setLoading(false);
-          setError("Invalid email or password");
-          alert("Invalid Email or Password!");
-          throw new Error("Invalid email or password");
+    try {
+      const response = await fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCT-nS4GcoUSHjEgigK-wmCxCEpLe8FxM8",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: enteredEmail,
+            password: enteredPassword,
+            returnSecureToken: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      })
-      .catch((error) => {
+      );
+
+      if (response.ok) {
+        const data = await response.json();
         setLoading(false);
-        setError(error.message);
-      });
+        setSuccess(true);
+        localStorage.setItem("token", data.idToken);
+        authCtx.setToken(data.idToken);
+        navigate("/login");
+      } else {
+        setLoading(false);
+        setError("Invalid email or password");
+      }
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
+    }
   };
 
   const navigateHandler = () => {
@@ -85,14 +81,14 @@ const Signup = () => {
           </div>
         </form>
       )}
-      {success && <p>Signup Successful</p>}
-      {error && <p>{error}</p>}
-      <p>
-        Already have an account?{" "}
-        <button className={classes.btn} type="button" onClick={navigateHandler}>
-          Login
-        </button>
-      </p>
+      {success && <p className={classes.successMsg}>Signup Successful</p>}
+      {error && <p className={classes.errorMsg}>{error}</p>}
+      <div className={classes.toggle}>
+        <p>
+          Already have an account?{" "}
+          <span onClick={navigateHandler}>Login Now</span>
+        </p>
+      </div>
     </div>
   );
 };

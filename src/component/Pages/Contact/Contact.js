@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Contact.module.css";
+import classes from "../Signup/Signup.module.css";
 
 const Contact = () => {
   const url =
@@ -26,8 +26,7 @@ const Contact = () => {
         return response.json();
       })
       .then((responseData) => {
-        alert("Thanks For Your Intrest! ");
-        console.log("Data saved to Firebase:", responseData);
+        alert("Thanks For Your Intrest, We will contact you shortly! ");
       })
       .catch((error) => {
         console.error("Error saving data to Firebase:", error);
@@ -36,7 +35,7 @@ const Contact = () => {
   };
 
   return (
-    <div className={classes.card}>
+    <div className={classes.signupcard}>
       <h1>Contact Us</h1>
       <form id="contact-form" onSubmit={handleSubmit}>
         <div className={classes.control}>
@@ -49,7 +48,7 @@ const Contact = () => {
           <label htmlFor="phone">Phone Number:</label>
           <input type="tel" id="phone" name="phone" />
           <br />
-          <input type="submit" value="Submit" />
+          <button className={classes.btn}>Submit</button>
         </div>
       </form>
     </div>

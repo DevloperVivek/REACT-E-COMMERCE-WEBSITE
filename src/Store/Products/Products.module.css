@@ -1,93 +1,64 @@
-  /* .generics {
-    margin-top: 3rem;
-    background-color: #777;
-    padding: 3rem;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 60px;
-  }
-  
-  .link {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-  }
-  
-  .title {
-    font-family: "Metal Mania";
-    font-style: inherit;
-    margin-top: 2rem;
-    color: black;
-    text-align: center;
-  }
-  
-   .ualign {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    align-items: center; 
-    list-style: none;
-    margin: 0 auto; 
-    max-width: 800px; 
-  }
-  
-  @media (max-width: 700px) {
-    .ualign {
-      margin: 0 20px;
-    }
-  }
-  
-  @media (max-width: 700px) {
-    .ualign {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin: 0 150px;
-    }
-  }
-   */
+.bgCover {
+  background-image: url("https://img.freepik.com/free-photo/young-woman-yellow-leather-jacket-copy-space_23-2148674153.jpg?w=1060&t=st=1693040554~exp=1693041154~hmac=fd0e86dc5929f5d66e04e5a33b7eee917b76cc47d2feec5679ff7e02ae588d7d");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 400px;
+  width: 100%;
+  background-size: cover;
+  object-fit: cover;
+  background-attachment: fixed;
+  background-color: rgba(255, 198, 66, 0.8);
+}
 
-   .generics {
-    margin-top: 3rem;
-    background-color: #777;
-    padding: 3rem;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 60px;
+.coverText {
+  margin-top: 5rem;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  font-size: 40px;
+  font-family: "Metal Mania";
+  line-height: 1px;
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+.title {
+  font-family: "Metal Mania";
+  font-style: inherit;
+  padding: 1rem;
+  color: black;
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: auto 120px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.list > div {
+  margin: 15px;
+}
+
+@media (max-width: 700px) {
+  .header {
+    font-size: 25px;
   }
-  
-  .link {
-    text-decoration: none;
-    color: rgb(0, 0, 0);
-  }
-  
-  .title {
-    font-family: "Metal Mania";
-    font-style: inherit;
-    margin-top: 2rem;
-    color: black;
-    text-align: center;
-  }
-  
-  .ualign {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
+
+  .list {
     margin: 0 auto;
-    max-width: 800px;
+    padding: 0 10px;
+    max-width: 200px;
   }
-  
-  .ualign > div {
-    margin: 15px;
-  }
-
-  
-  @media (max-width: 700px) {
-    .ualign {
-      margin: 0 20px;
-    }
-  }
-  
+}

@@ -6,24 +6,26 @@
   position: fixed;
   align-items: center;
   justify-content: space-between;
-  background-color: #000000;
+  background-color: #ffc738;
   z-index: 100;
 }
 
 .header h1 {
-  font-size: 35px;
-  color: rgb(255, 255, 255);
-  margin: 7px;
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+  margin: 20px;
 }
 
 .header ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 10px;
+  padding: 10px;
 }
 
-.header .navlinks {
+.navlinks {
   list-style: none;
+  margin: 10px;
+  color: antiquewhite;
 }
 
 .header .navlinks li {
@@ -34,19 +36,19 @@
 .header .navlinks li a {
   font-size: small;
   text-decoration: none;
-  color: aliceblue;
-  margin: 0;
+  color: black;
+  margin: 2px;
 }
 
 .header .navlinks li:hover,
 .header .navlinks li a.active {
-  color: antiquewhite;
+  color: white;
   text-decoration: underline;
 }
 
 @media (max-width: 700px) {
   .header h1 {
-    font-size: 19px;
+    font-size: 20px;
     margin: 2%;
   }
 
@@ -54,12 +56,10 @@
     display: inline-block;
     padding: 0px 5px;
     margin: auto;
-    color: white;
   }
 
   .header .navlinks li a {
     text-decoration: none;
-    color: aliceblue;
     margin: 1px;
   }
 }

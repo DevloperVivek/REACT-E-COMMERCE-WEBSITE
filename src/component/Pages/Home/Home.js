@@ -5,42 +5,66 @@ import HomeList from "./HomeList";
 import CartProvider from "../../../context/CartProvider";
 import Header from "../../Layout/Header/Header/Header";
 
-const homeArr = [
+const offersList = [
   {
     id: 1,
     date: "Jul 16",
-    place: "DETROIT",
-    description: "DTE ENERGY MUSIC THEATRE",
+    category: "Electronics",
+    offer: "20% OFF with excited gifts",
   },
   {
     id: 2,
-    date: "Jul 19",
-    place: "TORONTO",
-    description: "BUDWEISER STAGE",
+    date: "Aug 5",
+    category: "Fashion & Clothing",
+    offer: "Buy 1 Get 1 Free on selected items",
   },
   {
     id: 3,
-    date: "JUL 22",
-    place: "BRISTOW",
-    description: "JIGGY LUBE LIVE",
+    date: "Sep 10",
+    category: "Home Appliances",
+    offer: "Up to 40% OFF on kitchen essentials",
   },
   {
     id: 4,
-    date: "JUL 29",
-    place: "PHOENIX",
-    description: "AK-CHIN PAVILION",
+    date: "Oct 3",
+    category: "Sports & Outdoors",
+    offer: "Extra 30% OFF on outdoor gear",
   },
   {
     id: 5,
-    date: "AUG 2",
-    place: "PHOENIX",
-    description: "AK-CHIN PAVILION",
+    date: "Nov 20",
+    category: "Beauty & Personal Care",
+    offer: "Free Gift Set with orders above $50",
   },
   {
     id: 6,
-    date: "AUG 7",
-    place: "CONCORD",
-    description: "CONCORD PAVILION",
+    date: "Dec 12",
+    category: "Books, Movies & Music",
+    offer: "Buy 2, Get 1 Free on bestselling books",
+  },
+  {
+    id: 7,
+    date: "Jan 7",
+    category: "Toys & Games",
+    offer: "Huge Discounts on popular board games",
+  },
+  {
+    id: 8,
+    date: "Feb 14",
+    category: "Jewelry & Accessories",
+    offer: "Valentine's Day Special",
+  },
+  {
+    id: 9,
+    date: "Mar 23",
+    category: "Home & Furniture",
+    offer: "Spring Sale: Up to 50% OFF",
+  },
+  {
+    id: 10,
+    date: "Apr 30",
+    category: "Mobile Phones",
+    offer: "free case on pre-order",
   },
 ];
 
@@ -55,26 +79,31 @@ export default function Home() {
     setCartIsShown(false);
   };
 
-  const homeList = homeArr.map((product) => (
+  const OfferList = offersList.map((offer) => (
     <HomeList
-      key={product.id}
-      date={product.date}
-      place={product.place}
-      description={product.description}
+      key={offer.id}
+      date={offer.date}
+      category={offer.category}
+      offer={offer.offer}
     />
   ));
 
   return (
-    <div>
-      <CartProvider>
-        <h2 className={classes.generics}>The Generics</h2>
-        {cartIsShown && <Cart onClose={hideCartHandler} />}
+    <CartProvider>
+      <div className={classes.container}>
+        <div className={classes.bgCover}>
+          <div className={classes.coverText}>
+            <h2>Online Store</h2>
+            <p>Check the latest offers and brand new products in the store</p>
+          </div>
+        </div>
         <Header onShowCart={showCartHandler} />
-        <h1 className={classes.title}>Tours</h1>
+        <h1 className={classes.title}>Upcoming Offers</h1>
         <main>
-          <ul className={classes.ualign}>{homeList}</ul>
+          <ul className={classes.ualign}>{OfferList}</ul>
         </main>
-      </CartProvider>
-    </div>
+        {cartIsShown && <Cart onClose={hideCartHandler} />}
+      </div>
+    </CartProvider>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import AuthContext from "../../../../context/Auth-context";
-import classes from "./Header.module.css";
 import HeaderCartButton from "../HeaderButton/HeaderCartButton";
+import classes from "./Header.module.css";
 
 const Header = (props) => {
   const authCtx = useContext(AuthContext);
@@ -15,20 +15,20 @@ const Header = (props) => {
   return (
     <header className={classes.header}>
       <h1>Ecomin</h1>
-      <nav className={classes.nav}>
-        <ul className={classes.navlinks}>
-          {isLogin && (
-            <li>
-              <NavLink
-                to="/profile"
-                className={({ isActive }) =>
-                  isActive ? classes.active : undefined
-                }
-              >
-                Profile
-              </NavLink>
-            </li>
-          )}
+      <ul className={classes.navlinks}>
+        {isLogin && (
+          <li>
+            <NavLink
+              to="/profile"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Profile
+            </NavLink>
+          </li>
+        )}
+        {isLogin && (
           <li>
             <NavLink
               to="/"
@@ -40,6 +40,8 @@ const Header = (props) => {
               Home
             </NavLink>
           </li>
+        )}
+        {isLogin && (
           <li>
             <NavLink
               to="/products"
@@ -50,56 +52,45 @@ const Header = (props) => {
               Store
             </NavLink>
           </li>
+        )}
+        {isLogin && (
           <li>
             <NavLink
-              to="/about"
+              to="/signup"
+              onClick={logoutHandler}
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
             >
-              About
+              Logout
             </NavLink>
           </li>
-          {isLogin && (
-            <li>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  isActive ? classes.active : undefined
-                }
-              >
-                Contact Us
-              </NavLink>
-            </li>
-          )}
-
-          {isLogin && (
-            <li>
-              <NavLink
-                to="/signup"
-                onClick={logoutHandler}
-                className={({ isActive }) =>
-                  isActive ? classes.active : undefined
-                }
-              >
-                Logout
-              </NavLink>
-            </li>
-          )}
-          {!isLogin && (
-            <li>
-              <NavLink
-                to="/login"
-                className={({ isActive }) =>
-                  isActive ? classes.active : undefined
-                }
-              >
-                Login
-              </NavLink>
-            </li>
-          )}
-        </ul>
-      </nav>
+        )}
+        {!isLogin && (
+          <li>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Login
+            </NavLink>
+          </li>
+        )}
+        {!isLogin && (
+          <li>
+            <NavLink
+              to="/signup"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              Signup
+            </NavLink>
+          </li>
+        )}
+      </ul>
       {authCtx.isLoggedIn && <HeaderCartButton onClick={props.onShowCart} />}
     </header>
   );

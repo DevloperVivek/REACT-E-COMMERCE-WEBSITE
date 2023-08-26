@@ -1,40 +1,68 @@
-  .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-    padding: 20px;
-    background: #56CCF2;
-  }
-  
-  .footericons {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-  
-  .footerIconsList {
-    list-style-type: none;
-    display: flex;
-  }
-  
-  .footerIconsList li {
-    padding: 0;
-    margin: 5px;
-  }
-  
-  .footerIconsList li:hover {
-    background: rgb(63, 63, 63);
-  }
-  
-  .footerIconsList img {
-    width: 30px;
-    height: 30px;
-  }
-  
-  @media (max-width: 700px) {
-    .ualign {
-      margin: 1%;
-    }
-  }
-  
+.footer {
+  background-color: #ededed;
+  color: black;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 5px auto;
+  padding: 0 1rem;
+}
+
+.footerText {
+  margin: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.footerText a{
+  text-decoration: none;
+  color: black;
+}
+
+.footerText a:hover{
+  text-decoration: none;
+  color: #fbb351;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center; 
+  align-items: center;
+  margin-right: 20px;
+}
+
+.footerLink {
+  margin: 10px;
+  font-size: 14px;
+  text-decoration: none;
+  color: black;
+}
+
+.footerLink:hover {
+  color: #fbb351;
+}
+
+.footerIconsList {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.footerIconsList li {
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.footerIconsList img {
+  width: 30px;
+  height: 30px;
+}
