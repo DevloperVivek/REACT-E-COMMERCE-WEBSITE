@@ -1,6 +1,11 @@
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
 .signupcard {
   border-radius: 12px;
-  margin: 7rem auto 2rem;
+  margin: 10rem auto;
   max-width: 300px;
   padding: 2rem;
   border: 1px solid #ccc;

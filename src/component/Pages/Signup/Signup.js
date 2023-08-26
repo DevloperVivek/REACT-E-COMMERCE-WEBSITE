@@ -57,37 +57,39 @@ const Signup = () => {
   };
 
   return (
-    <div className={classes.signupcard}>
-      <h1>Signup</h1>
-      {!success && (
-        <form id="signup-form" onSubmit={handleSubmit}>
-          <div className={classes.control}>
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" ref={emailInputRef} />
-          </div>
-          <div className={classes.control}>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              ref={passwordInputRef}
-            />
-          </div>
-          <div className={classes.control}>
-            <button className={classes.btn} type="submit" disabled={loading}>
-              {loading ? "Signing up" : "Signup"}
-            </button>
-          </div>
-        </form>
-      )}
-      {success && <p className={classes.successMsg}>Signup Successful</p>}
-      {error && <p className={classes.errorMsg}>{error}</p>}
-      <div className={classes.toggle}>
-        <p>
-          Already have an account?{" "}
-          <span onClick={navigateHandler}>Login Now</span>
-        </p>
+    <div className={classes.container}>
+      <div className={classes.signupcard}>
+        <h1>Signup</h1>
+        {!success && (
+          <form id="signup-form" onSubmit={handleSubmit}>
+            <div className={classes.control}>
+              <label htmlFor="email">Email:</label>
+              <input type="email" id="email" name="email" ref={emailInputRef} />
+            </div>
+            <div className={classes.control}>
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                ref={passwordInputRef}
+              />
+            </div>
+            <div className={classes.control}>
+              <button className={classes.btn} type="submit" disabled={loading}>
+                {loading ? "Signing up" : "Signup"}
+              </button>
+            </div>
+          </form>
+        )}
+        {success && <p className={classes.successMsg}>Signup Successful</p>}
+        {error && <p className={classes.errorMsg}>{error}</p>}
+        <div className={classes.toggle}>
+          <p>
+            Already have an account?{" "}
+            <span onClick={navigateHandler}>Login Now</span>
+          </p>
+        </div>
       </div>
     </div>
   );

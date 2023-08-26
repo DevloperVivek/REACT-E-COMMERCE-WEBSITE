@@ -40,22 +40,24 @@ const Profile = () => {
   };
 
   return (
-    <div className={classes.signupcard}>
-      <h3>Change Password</h3>
-      <form id="contact-form" onSubmit={handleChangePassword}>
-        <div className={classes.control}>
-          <label htmlFor="new-password">New password</label>
-          <input
-            type="password"
-            id="new-password"
-            ref={newPasswordInputRef}
-            onChange={(event) => setNewPassword(event.target.value)}
-          />
-          <button className={classes.btn} type="submit">
-            Change Password
-          </button>
-        </div>
-      </form>
+    <div className={classes.container}>
+      <div className={classes.signupcard}>
+        <h3>Change Password</h3>
+        <form id="contact-form" onSubmit={handleChangePassword}>
+          <div className={classes.control}>
+            <label htmlFor="new-password">New password</label>
+            <input
+              type="password"
+              id="new-password"
+              ref={newPasswordInputRef}
+              onChange={(event) => setNewPassword(event.target.value)}
+            />
+            <button className={classes.btn} type="submit">
+              Change Password
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

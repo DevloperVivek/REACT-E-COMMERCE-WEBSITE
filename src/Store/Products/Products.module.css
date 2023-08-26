@@ -37,28 +37,27 @@
 }
 
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
   list-style: none;
-  margin: auto 120px;
-  width: 100%;
-  max-width: 900px;
+  margin: auto 10px;
+  max-width: 100%;
+  padding: 0px 5px;
 }
 
 .list > div {
-  margin: 15px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 700px) {
-  .header {
-    font-size: 25px;
-  }
 
   .list {
+    grid-template-columns: repeat(1, 1fr);
     margin: 0 auto;
     padding: 0 10px;
-    max-width: 200px;
+    max-width: auto;
   }
 }

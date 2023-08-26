@@ -60,32 +60,34 @@ const Login = () => {
   };
 
   return (
-    <div className={classes.signupcard}>
-      <h1>Login</h1>
-      <form id="login-form" onSubmit={handleSubmit}>
-        <div className={classes.control}>
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" ref={emailInputRef} />
-          <br />
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            ref={passwordInputRef}
-          />
-          <br />
-          <button className={classes.btn} type="submit" disabled={loading}>
-            {loading ? "Logging in" : "Login"}
-          </button>
+    <div className={classes.container}>
+      <div className={classes.signupcard}>
+        <h1>Login</h1>
+        <form id="login-form" onSubmit={handleSubmit}>
+          <div className={classes.control}>
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" ref={emailInputRef} />
+            <br />
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              ref={passwordInputRef}
+            />
+            <br />
+            <button className={classes.btn} type="submit" disabled={loading}>
+              {loading ? "Logging in" : "Login"}
+            </button>
+          </div>
+        </form>
+        {error && <p>{error}</p>}
+        <div className={classes.toggle}>
+          <p>
+            Don't have an account yet?{" "}
+            <span onClick={navigateHandler}>Signup Now</span>
+          </p>
         </div>
-      </form>
-      {error && <p>{error}</p>}
-      <div className={classes.toggle}>
-        <p>
-          Don't have an account yet?{" "}
-          <span onClick={navigateHandler}>Signup Now</span>
-        </p>
       </div>
     </div>
   );
