@@ -18,9 +18,12 @@
   color: rgb(255, 255, 255);
   text-transform: uppercase;
   font-size: 40px;
-  font-family: "Metal Mania";
   line-height: 1px;
   text-align: center;
+}
+
+.coverText p {
+  font-size: 20px;
 }
 
 .link {
@@ -33,32 +36,37 @@
   font-style: inherit;
   padding: 1rem;
   color: black;
+  font-size: 30px;
   text-align: center;
 }
 
 .list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
   list-style: none;
-  margin: auto 120px;
-  width: 100%;
-  max-width: 900px;
+  margin: 0 auto; 
+  max-width: 1200px;
+  padding: 0 20px;
 }
 
 .list > div {
-  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 @media (max-width: 700px) {
-  .header {
-    font-size: 25px;
+  .coverText {
+    font-size: 20px;
   }
-
+  .coverText p{
+    font-size: 10px;
+  }
   .list {
+    grid-template-columns: repeat(1, 1fr);
     margin: 0 auto;
-    padding: 0 10px;
-    max-width: 200px;
   }
 }

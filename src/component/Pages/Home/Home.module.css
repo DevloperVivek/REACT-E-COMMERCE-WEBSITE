@@ -1,5 +1,6 @@
 .bgCover {
-  background-image: url("https://img.freepik.com/free-photo/young-woman-yellow-leather-jacket-copy-space_23-2148674153.jpg?w=1060&t=st=1693040554~exp=1693041154~hmac=fd0e86dc5929f5d66e04e5a33b7eee917b76cc47d2feec5679ff7e02ae588d7d");
+  /* background-image: url("https://img.freepik.com/free-photo/young-woman-yellow-leather-jacket-copy-space_23-2148674153.jpg?w=1060&t=st=1693040554~exp=1693041154~hmac=fd0e86dc5929f5d66e04e5a33b7eee917b76cc47d2feec5679ff7e02ae588d7d"); */
+  background-image: url(../../assets/cover.jpg);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +11,7 @@
   background-size: cover;
   object-fit: cover;
   background-attachment: fixed;
-  background-color: rgba(255, 198, 66, 0.8);
+  background-color: rgba(255, 190, 39, 0.903);
 }
 
 .coverText {
@@ -96,7 +97,7 @@
     font-size: 30px;
   }
   .coverText p{
-    font-size: 12px;
+    font-size: 10px;
   }
   .ualign {
     padding: 0 1rem;

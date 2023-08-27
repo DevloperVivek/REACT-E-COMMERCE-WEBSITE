@@ -100,17 +100,18 @@ const Products = () => {
 
   return (
     <CartProvider>
-      <div className={classes.container}>
-        <Header onShowCart={showCartHandler} />
-        <div className={classes.bgCover}>
-          <div className={classes.coverText}>
-            <h2>Online Store</h2>
-          </div>
+      <Header onShowCart={showCartHandler} />
+      <div className={classes.bgCover}>
+        <div className={classes.coverText}>
+          <h2>Online Store</h2>
+          <p>Check the latest offers and brand new products in the store</p>
         </div>
-        <h1 className={classes.title}>Products</h1>
-        <ul className={classes.list}>{productsList}</ul>
-        {cartIsShown && <Cart onClose={hideCartHandler} />}
       </div>
+      <h1 className={classes.title}>Products</h1>
+      <div className={classes.products}>
+        <ul className={classes.list}>{productsList}</ul>
+      </div>
+      {cartIsShown && <Cart onClose={hideCartHandler} />}
     </CartProvider>
   );
 };

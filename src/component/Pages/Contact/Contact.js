@@ -35,22 +35,24 @@ const Contact = () => {
   };
 
   return (
-    <div className={classes.signupcard}>
-      <h1>Contact Us</h1>
-      <form id="contact-form" onSubmit={handleSubmit}>
-        <div className={classes.control}>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" />
-          <br />
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" />
-          <br />
-          <label htmlFor="phone">Phone Number:</label>
-          <input type="tel" id="phone" name="phone" />
-          <br />
-          <button className={classes.btn}>Submit</button>
-        </div>
-      </form>
+    <div className={classes.container}>
+      <div className={classes.signupcard}>
+        <h1>Contact Us</h1>
+        <form id="contact-form" onSubmit={handleSubmit}>
+          <div className={classes.control}>
+            <label htmlFor="name">Name:</label>
+            <input type="text" id="name" name="name" />
+            <br />
+            <label htmlFor="email">Email:</label>
+            <input type="email" id="email" name="email" />
+            <br />
+            <label htmlFor="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" />
+            <br />
+            <button className={classes.btn}>Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

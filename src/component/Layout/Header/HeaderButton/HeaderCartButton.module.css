@@ -32,13 +32,13 @@
   @media (max-width: 700px) {
     .button {
       font-size: small;
-      margin: 10px;
+      margin: 2px;
       padding: 5px;
     }
   
     .navlinks {
       font-size: small;
-      margin: 1%;
+      margin: 5px;
     }
   
     .icon {
@@ -50,7 +50,7 @@
     .badge {
       padding: 5px;
       margin: auto;
-      font-weight: 500;
+      font-weight: 600;
     }
   }
   
