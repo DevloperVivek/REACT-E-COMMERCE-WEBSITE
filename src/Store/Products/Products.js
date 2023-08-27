@@ -108,7 +108,9 @@ const Products = () => {
         </div>
       </div>
       <h1 className={classes.title}>Products</h1>
-      <ul className={classes.list}>{productsList}</ul>
+      <div className={classes.products}>
+        <ul className={classes.list}>{productsList}</ul>
+      </div>
       {cartIsShown && <Cart onClose={hideCartHandler} />}
     </CartProvider>
   );

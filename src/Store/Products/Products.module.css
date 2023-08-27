@@ -22,6 +22,10 @@
   text-align: center;
 }
 
+.coverText p {
+  font-size: 20px;
+}
+
 .link {
   text-decoration: none;
   color: rgb(0, 0, 0);
@@ -32,23 +36,26 @@
   font-style: inherit;
   padding: 1rem;
   color: black;
+  font-size: 30px;
   text-align: center;
 }
 
 .list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
+  gap: 10px;
   list-style: none;
-  margin: auto 10px;
-  max-width: 100%;
-  padding: 0px 5px;
+  margin: 0 auto; 
+  max-width: 1200px;
+  padding: 0 20px;
 }
 
 .list > div {
-  margin: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 @media (max-width: 700px) {
@@ -61,7 +68,5 @@
   .list {
     grid-template-columns: repeat(1, 1fr);
     margin: 0 auto;
-    padding: 0 10px;
-    max-width: auto;
   }
 }
